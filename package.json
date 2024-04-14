@@ -5,6 +5,7 @@
   "scripts": {},
   "private": true,
   "devDependencies": {
+    "@analogjs/platform": "^1.2.0",
     "@nx/js": "18.2.4",
     "@nx/node": "^18.2.4",
     "@nx/workspace": "18.2.4",
