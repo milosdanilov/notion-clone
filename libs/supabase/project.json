@@ -12,8 +12,7 @@
         "outputPath": "dist/libs/supabase",
         "tsConfig": "libs/supabase/tsconfig.lib.json",
         "packageJson": "libs/supabase/package.json",
-        "main": "libs/supabase/src/index.ts",
-        "assets": ["libs/supabase/*.md"]
+        "main": "libs/supabase/src/index.ts"
       }
     }
   }
