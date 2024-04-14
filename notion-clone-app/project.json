@@ -1,0 +1,63 @@
+{
+  "name": "notion-clone-app",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "./notion-clone-app/src",
+  "targets": {
+    "build": {
+      "executor": "@analogjs/platform:vite",
+      "outputs": [
+        "{options.outputPath}",
+        "{workspaceRoot}/dist/notion-clone-app/.nitro",
+        "{workspaceRoot}/dist/notion-clone-app/ssr",
+        "{workspaceRoot}/dist/notion-clone-app/analog"
+      ],
+      "options": {
+        "main": "notion-clone-app/src/main.ts",
+        "configFile": "notion-clone-app/vite.config.ts",
+        "outputPath": "dist/notion-clone-app/client",
+        "tsConfig": "notion-clone-app/tsconfig.app.json"
+      },
+      "defaultConfiguration": "production",
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "sourcemap": false,
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@analogjs/platform:vite-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "notion-clone-app:build",
+        "port": 4200
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "notion-clone-app:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "notion-clone-app:build:production"
+        }
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "notion-clone-app:build"
+      }
+    },
+    "test": {
+      "executor": "@analogjs/platform:vitest",
+      "outputs": [
+        "{projectRoot}/coverage"
+      ]
+    }
+  },
+  "tags": []
+}
