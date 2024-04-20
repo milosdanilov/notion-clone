@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@notion-clone/supabase": ["libs/supabase/src/index.ts"]
+      "@notion-clone/supabase": ["libs/supabase/src/index.ts"],
+      "@/*": ["notion-clone-app/src/*.ts"],
     }
   },
   "exclude": ["node_modules", "tmp"]
