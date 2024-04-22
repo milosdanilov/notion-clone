@@ -35,5 +35,10 @@
         "targetName": "test"
       }
     }
-  ]
+  ],
+  "generators": {
+    "@nx/angular:component": {
+      "style": "css"
+    }
+  }
 }

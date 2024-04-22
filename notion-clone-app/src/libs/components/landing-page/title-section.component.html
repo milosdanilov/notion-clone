@@ -1,0 +1,25 @@
+<section class="flex flex-col gap-4 justify-center items-start md:items-center">
+  <article
+    class="rounded-full p-[1px] dark:bg-gradient-to-r dark:from-brand-primaryBlue dark:to-brand-primaryPurple"
+  >
+    <div class="rounded-full px-3 py-1 dark:bg-black">{{ pill }}</div>
+  </article>
+
+  @if (subheading) {
+  <h2
+    class="text-left text-3xl sm:text-5xl sm:max-w-[750px] md:text-center font-semibold"
+  >
+    {{ title }}
+  </h2>
+  <p class="dark:text-washed-purple-700 sm:max-w-[450px] md:text-center">
+    {{ subheading }}
+  </p>
+  } @else {
+  <h1
+    class="text-left text-4xl sm:text-6xl sm:max-w-[850px] md:text-center font-semibold"
+  >
+    {{ title }}
+  </h1>
+  }
+  
+</section>
