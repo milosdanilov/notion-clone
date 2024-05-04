@@ -55,6 +55,14 @@
     "test": {
       "executor": "@analogjs/platform:vitest",
       "outputs": ["{projectRoot}/coverage"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["notion-clone-app/src/**/*.ts"],
+        "ignorePath": ".eslintignore"
+      }
     }
   },
   "tags": []
