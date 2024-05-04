@@ -35,13 +35,12 @@ nc-app-root {
   isolation: isolate;
 }
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --font-sans: ''
+  --font-sans: '';
 }
 
 @layer base {
