@@ -54,9 +54,7 @@
     },
     "test": {
       "executor": "@analogjs/platform:vitest",
-      "outputs": [
-        "{projectRoot}/coverage"
-      ]
+      "outputs": ["{projectRoot}/coverage"]
     }
   },
   "tags": []

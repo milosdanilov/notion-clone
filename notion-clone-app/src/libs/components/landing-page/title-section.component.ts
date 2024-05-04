@@ -8,7 +8,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './title-section.component.html',
 })
 export class TitleSectionComponent {
-
   @Input()
   pill!: string;
 

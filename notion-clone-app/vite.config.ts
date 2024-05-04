@@ -11,39 +11,43 @@ export default defineConfig(({ mode }) => {
   return {
     root: __dirname,
     publicDir: 'src/public',
-    
+
     ssr: {
-      noExternal: ['@analogjs/trpc','@trpc/server'],
+      noExternal: ['@analogjs/trpc', '@trpc/server'],
     },
     alias: {
-      "@/": path.resolve(__dirname, './src'),
+      '@/': path.resolve(__dirname, './src'),
     },
     build: {
       outDir: '../dist/./notion-clone-app/client',
       reportCompressedSize: true,
-      commonjsOptions: { transformMixedEsModules: true },      
+      commonjsOptions: { transformMixedEsModules: true },
       target: ['es2020'],
     },
     server: {
       fs: {
         allow: ['.'],
       },
-    },    
+    },
     plugins: [
-      
       analog({
         nitro: {
           routeRules: {
             '/': {
               prerender: false,
-            }
+            },
           },
           rollupConfig: {
-            plugins: [typescriptPaths({ tsConfigPath: 'tsconfig.base.json', preserveExtensions: true })]
-          }
-        }
+            plugins: [
+              typescriptPaths({
+                tsConfigPath: 'tsconfig.base.json',
+                preserveExtensions: true,
+              }),
+            ],
+          },
+        },
       }),
-      
+
       nxViteTsPaths(),
       splitVendorChunkPlugin(),
     ],
