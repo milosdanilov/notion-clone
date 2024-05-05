@@ -26,7 +26,7 @@ import {
       <nc-title-section
         pill="✨ Your Workspace, Perfected"
         title="All-In-One Collaboration and Productivity Platform"
-      ></nc-title-section>
+      />
       <div
         class="bg-white 
         p-[2px] 
@@ -79,6 +79,51 @@ import {
     </section>
     <section class="relative">
       <nc-logo-carousel [logos]="clients" />
+    </section>
+    <section
+      class="px-4 
+      sm:px-6
+      flex
+      justify-center
+      items-center
+      flex-col
+      relative"
+    >
+      <div
+        class="w-[30%]
+        blur-[120px]
+        rounded-full
+        h-32
+        absolute
+        bg-brand-primaryPurple/50
+        -z-10
+        top-22"
+      >
+      </div>
+      <nc-title-section
+        title="Keep track of your meetings, all in one place"
+        subheading="Capture your ideas, thoughts, and meeting notes in a structured and organized manner."
+        pill="Features"
+      />
+      <div
+        class="mt-10 
+        max-w-[450px] 
+        flex
+        justify-center
+        items-center
+        relative
+        sm:ml-0
+        rounded-2xl
+        border-8
+        border-washed-purple-300
+        border-opacity-10"
+      >
+        <img
+          src="assets/cal.png"
+          alt="Banner"
+          class="rounded-2xl"
+        />
+      </div>
     </section>
   `,
 })
