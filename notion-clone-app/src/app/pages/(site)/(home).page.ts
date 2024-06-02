@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LowerCasePipe, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 
@@ -12,20 +12,6 @@ import {
 } from '../../../libs/components/logo-carousel/logo-carousel.component';
 
 import { CustomCardComponent } from '../../../libs/components/landing-page/custom-card/custom-card.component';
-import {
-  HlmCardContentDirective,
-  HlmCardDescriptionDirective,
-  HlmCardDirective,
-  HlmCardFooterDirective,
-  HlmCardHeaderDirective,
-  HlmCardTitleDirective,
-} from '@spartan-ng/ui-card-helm';
-
-import {
-  HlmAvatarComponent,
-  HlmAvatarImageDirective,
-  HlmAvatarFallbackDirective,
-} from '@spartan-ng/ui-avatar-helm';
 
 @Component({
   standalone: true,
