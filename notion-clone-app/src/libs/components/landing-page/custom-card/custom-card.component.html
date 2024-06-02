@@ -1,0 +1,43 @@
+<section
+  hlmCard
+  class="w-[500px] shrink-0s rounded-xl dark:bg-gradient-to-t dark:from-border dark:to-background"
+>
+  <div hlmCardHeader>
+    <div class="flex items-center gap-4">
+      <hlm-avatar>
+        <img
+          [src]="avatarUrl"
+          hlmAvatarImage
+        />
+        <span
+          class="text-white bg-destructive"
+          hlmAvatarFallback
+          >AV</span
+        >
+      </hlm-avatar>
+      <div>
+        <div
+          hlmCardTitle
+          class="text-foreground"
+        >
+          {{ name }}
+        </div>
+        <div
+          hlmCardDescription
+          class="dark:text-washed-purple-800"
+        >
+          {{ name | lowercase }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    hlmCardContent
+    class="grid gap-4"
+  >
+    <p class="dark:text-washed-purple-800">
+      {{ message }}
+    </p>
+  </div>
+  <div hlmCardFooter></div>
+</section>

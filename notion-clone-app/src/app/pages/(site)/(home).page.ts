@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { LowerCasePipe, NgClass } from '@angular/common';
 
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
+
+import { USERS } from '../../../libs/constants';
 
 import { TitleSectionComponent } from '../../../libs/components/landing-page/title-section.component';
 import {
@@ -8,9 +11,31 @@ import {
   LogoCarouselComponent,
 } from '../../../libs/components/logo-carousel/logo-carousel.component';
 
+import { CustomCardComponent } from '../../../libs/components/landing-page/custom-card/custom-card.component';
+import {
+  HlmCardContentDirective,
+  HlmCardDescriptionDirective,
+  HlmCardDirective,
+  HlmCardFooterDirective,
+  HlmCardHeaderDirective,
+  HlmCardTitleDirective,
+} from '@spartan-ng/ui-card-helm';
+
+import {
+  HlmAvatarComponent,
+  HlmAvatarImageDirective,
+  HlmAvatarFallbackDirective,
+} from '@spartan-ng/ui-avatar-helm';
+
 @Component({
   standalone: true,
-  imports: [TitleSectionComponent, HlmButtonDirective, LogoCarouselComponent],
+  imports: [
+    TitleSectionComponent,
+    HlmButtonDirective,
+    LogoCarouselComponent,
+    NgClass,
+    CustomCardComponent,
+  ],
   template: `
     <section
       class="overflow-hidden 
@@ -98,8 +123,7 @@ import {
         bg-brand-primaryPurple/50
         -z-10
         top-22"
-      >
-      </div>
+      ></div>
       <nc-title-section
         title="Keep track of your meetings, all in one place"
         subheading="Capture your ideas, thoughts, and meeting notes in a structured and organized manner."
@@ -125,6 +149,57 @@ import {
         />
       </div>
     </section>
+    <section class="relative">
+      <div
+        class="w-full
+        blur-[120px]
+        rounded-full
+        h-32
+        absolute
+        bg-brand-primaryPurple/50
+        -z-10
+        top-56"
+      ></div>
+      <div
+        class="mt-20
+        px-4
+        sm-px-6
+        flex
+        flex-col
+        overflow-x-hidden
+        overflow-visible"
+      >
+        <nc-title-section
+          title="Trusted by all"
+          subheading="Join thousands of satisfied users who rely on our platform for their personal and professional productivity needs."
+          pill="Testemonials"
+        />
+        @for (item of [1, 2]; track $index) {
+        <div
+          class="mt-10
+          flex
+          flex-nowrap
+          gap-6
+          self-start
+          hover:paused"
+          [ngClass]="{
+          'flex-row-reverse': item === 2,
+          'animate-[slide_250s_linear_infinite]': true,
+          'animate-[slide_250s_linear_infinite_reverse]': item === 2,
+          'ml-[100vw]': item === 2,
+         }"
+        >
+          @for (testemonial of users; track $index) {
+          <nc-custom-card
+            [name]="testemonial.name"
+            [message]="testemonial.message"
+            avatarUrl="{{ 'assets/avatars/' + ($index + 1) + '.png' }}"
+          />
+          }
+        </div>
+        }
+      </div>
+    </section>
   `,
 })
 export default class HomePage {
@@ -135,4 +210,6 @@ export default class HomePage {
     { alt: 'client4', logo: 'assets/client4.png' },
     { alt: 'client5', logo: 'assets/client5.png' },
   ];
+
+  users = USERS;
 }
