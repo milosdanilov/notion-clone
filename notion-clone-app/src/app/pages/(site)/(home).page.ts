@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { NgClass } from '@angular/common';
+import { LowerCasePipe, NgClass } from '@angular/common';
 
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 
-import { USERS } from '../../../libs/constants';
+import { PRICING_CARDS, PRICING_PLANS, USERS } from '../../../libs/constants';
 
 import { TitleSectionComponent } from '../../../libs/components/landing-page/title-section.component';
 import {
@@ -12,6 +12,15 @@ import {
 } from '../../../libs/components/logo-carousel/logo-carousel.component';
 
 import { CustomCardComponent } from '../../../libs/components/landing-page/custom-card/custom-card.component';
+import {
+  HlmAvatarComponent,
+  HlmAvatarFallbackDirective,
+  HlmAvatarImageDirective,
+} from '@spartan-ng/ui-avatar-helm';
+import {
+  HlmCardDescriptionDirective,
+  HlmCardTitleDirective,
+} from '@spartan-ng/ui-card-helm';
 
 @Component({
   standalone: true,
@@ -21,7 +30,14 @@ import { CustomCardComponent } from '../../../libs/components/landing-page/custo
     LogoCarouselComponent,
     NgClass,
     CustomCardComponent,
+    HlmAvatarComponent,
+    HlmAvatarImageDirective,
+    HlmAvatarFallbackDirective,
+    HlmCardTitleDirective,
+    HlmCardDescriptionDirective,
+    LowerCasePipe,
   ],
+  selector: 'nc-site-home-page',
   template: `
     <section
       class="overflow-hidden 
@@ -177,12 +193,113 @@ import { CustomCardComponent } from '../../../libs/components/landing-page/custo
         >
           @for (testemonial of users; track $index) {
           <nc-custom-card
-            [name]="testemonial.name"
-            [message]="testemonial.message"
-            avatarUrl="{{ 'assets/avatars/' + ($index + 1) + '.png' }}"
-          />
+            class="w-[500px] shrink-0s rounded-xl dark:bg-gradient-to-t dark:from-border dark:to-background"
+          >
+            <div ncCustomCardHeader>
+              <div class="flex items-center gap-4">
+                <hlm-avatar>
+                  <img
+                    hlmAvatarImage
+                    src="{{ 'assets/avatars/' + ($index + 1) + '.png' }}"
+                  />
+                  <span hlmAvatarFallback>AV</span>
+                </hlm-avatar>
+                <div>
+                  <div
+                    hlmCardTitle
+                    class="text-foreground"
+                    >{{ testemonial.name }}</div
+                  >
+                  <div
+                    hlmCardDescription
+                    class="dark:text-washed-purple-800"
+                    >{{ testemonial.name | lowercase }}</div
+                  >
+                </div>
+              </div>
+            </div>
+            <div ncCustomCardContent>
+              <p class="dark:text-washed-purple-800">{{
+                testemonial.message
+              }}</p>
+            </div>
+          </nc-custom-card>
           }
         </div>
+        }
+      </div>
+    </section>
+    <section class="mt-20 px-4 sm:px-6">
+      <nc-title-section
+        title="The Perfect Plan For You"
+        subheading="Experience all the benefits of our platform. Select a plan that suits your needs and take your productivity to new heights."
+        pill="Pricing"
+      />
+      <div
+        class="flex flex-col-reverse sm:flex-row gap-4 justify-center sm:items-stretch items-center mt-10"
+      >
+        @for (card of pricingCards; track $index) {
+        <nc-custom-card
+          class="w-[300px] rounded-2xl dark:bg-black/40 background-blur-3xl relative"
+          [ngClass]="{
+            'border-brand-primaryPurple/70':
+              card.planType === pricingPlans.proplan
+          }"
+        >
+          <div ncCustomCardHeader>
+            <div
+              hlmCardTitle
+              class="text-2xl font-semibold"
+            >
+              @if (card.planType === pricingPlans.proplan) {
+              <div
+                class="hidden dark:block w-full blur-[120px] rounded-full h-32 absolute bg-brand-primaryPurple/80 -z-10 top-0"
+              >
+              </div>
+              <img
+                src="assets/icons/diamond.svg"
+                alt="Pro Plan Icon"
+                class="absolute top-6 right-6"
+              />
+              }
+              {{ card.planType }}
+            </div>
+          </div>
+          <div
+            ncCustomCardContent
+            class="p-0"
+          >
+            <span class="font-normal text-2xl">\${{ card.price }}</span>
+            @if (+card.price > 0) {
+            <span class="dark:text-washed-purple-800 ml-1">/mo</span>
+            }
+            <p class="dark:text-washed-purple-800">{{ card.description }}</p>
+            <button
+              variant="btn-primary"
+              class="whitespace-nowrap w-full mt-4"
+            >
+              {{
+                card.planType === pricingPlans.proplan
+                  ? 'Go Pro'
+                  : 'Get Started'
+              }}
+            </button>
+          </div>
+          <div ncCustomCardFooter>
+            <ul class="font-normal flex mb-2 flex-col gap-4">
+              <small>{{ card.highlightFeature }}</small>
+              @for (feature of card.freatures; track $index) {
+              <li class="flex items-center gap-2">
+                <img
+                  src="assets/icons/check.svg"
+                  alt="Check Icon"
+                />
+                {{ feature }}
+              </li>
+              }
+            </ul>
+          </div>
+        </nc-custom-card>
         }
       </div>
     </section>
@@ -198,4 +315,6 @@ export default class HomePage {
   ];
 
   users = USERS;
+  pricingCards = PRICING_CARDS;
+  pricingPlans = PRICING_PLANS;
 }
