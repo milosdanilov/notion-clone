@@ -19,6 +19,15 @@
               }
             ]
           }
+        ],
+        "prettier/prettier": [
+          "error",
+          {
+            "singleQuote": true,
+            "bracketSameLine": true,
+            "singleAttributePerLine": false,
+            "htmlWhitespaceSensitivity": "strict"
+          }
         ]
       }
     },
