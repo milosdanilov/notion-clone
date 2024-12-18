@@ -1,26 +1,20 @@
 import { Component } from '@angular/core';
-import { LowerCasePipe, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
+import { HlmCardTitleDirective } from '@spartan-ng/ui-card-helm';
 
 import { PRICING_CARDS, PRICING_PLANS, USERS } from '../../../libs/constants';
 
 import { TitleSectionComponent } from '../../../libs/components/landing-page/title-section.component';
+
 import {
   Logo,
   LogoCarouselComponent,
 } from '../../../libs/components/logo-carousel/logo-carousel.component';
 
 import { CustomCardComponent } from '../../../libs/components/landing-page/custom-card/custom-card.component';
-import {
-  HlmAvatarComponent,
-  HlmAvatarFallbackDirective,
-  HlmAvatarImageDirective,
-} from '@spartan-ng/ui-avatar-helm';
-import {
-  HlmCardDescriptionDirective,
-  HlmCardTitleDirective,
-} from '@spartan-ng/ui-card-helm';
+import { TestemonialsComponent } from '../../../libs/features/site/testemonials/testemonials.component';
 
 @Component({
   standalone: true,
@@ -30,12 +24,8 @@ import {
     LogoCarouselComponent,
     NgClass,
     CustomCardComponent,
-    HlmAvatarComponent,
-    HlmAvatarImageDirective,
-    HlmAvatarFallbackDirective,
     HlmCardTitleDirective,
-    HlmCardDescriptionDirective,
-    LowerCasePipe,
+    TestemonialsComponent,
   ],
   selector: 'nc-site-home-page',
   template: `
@@ -82,51 +72,19 @@ import {
     <section class="relative">
       <div
         class="w-full blur-[120px] rounded-full h-32 absolute bg-brand-primaryPurple/50 -z-10 top-56"></div>
-      <div
-        class="mt-20 px-4 sm-px-6 flex flex-col overflow-x-hidden overflow-visible">
+      <div class="mt-20 px-4 sm-px-6 overflow-x-hidden overflow-visible">
         <nc-title-section
           title="Trusted by all"
           subheading="Join thousands of satisfied users who rely on our platform for their personal and professional productivity needs."
           pill="Testemonials" />
-        @for (item of [1, 2]; track $index) {
-        <div
-          class="mt-10 flex flex-nowrap gap-6 self-start hover:paused"
-          [ngClass]="{
-            'flex-row-reverse': item === 2,
-            'animate-[slide_250s_linear_infinite]': true,
-            'animate-[slide_250s_linear_infinite_reverse]': item === 2,
-            'ml-[100vw]': item === 2,
-          }">
-          @for (testemonial of users; track $index) {
-          <nc-custom-card
-            class="w-[500px] shrink-0s rounded-xl dark:bg-gradient-to-t dark:from-border dark:to-background">
-            <div ncCustomCardHeader>
-              <div class="flex items-center gap-4">
-                <hlm-avatar>
-                  <img
-                    hlmAvatarImage
-                    src="{{ 'assets/avatars/' + ($index + 1) + '.png' }}" />
-                  <span hlmAvatarFallback>AV</span>
-                </hlm-avatar>
-                <div>
-                  <div hlmCardTitle class="text-foreground">
-                    {{ testemonial.name }}
-                  </div>
-                  <div hlmCardDescription class="dark:text-washed-purple-800">
-                    {{ testemonial.name | lowercase }}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div ncCustomCardContent>
-              <p class="dark:text-washed-purple-800">
-                {{ testemonial.message }}
-              </p>
-            </div>
-          </nc-custom-card>
-          }
+        <div class="flex flex-col">
+          <nc-testemonials
+            class="mt-10 flex flex-nowrap gap-6 self-start hover:paused animate-[slide_250s_linear_infinite]"
+            [users]="users" />
+          <nc-testemonials
+            class="mt-10 flex flex-nowrap gap-6 self-start hover:paused flex-row-reverse animate-[slide_250s_linear_infinite_reverse] ml-[100vw]"
+            [users]="users" />
         </div>
-        }
       </div>
     </section>
 

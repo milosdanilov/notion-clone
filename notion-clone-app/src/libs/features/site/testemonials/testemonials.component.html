@@ -1,0 +1,28 @@
+@for (testemonial of users; track $index) {
+<nc-custom-card
+  class="w-[500px] shrink-0s rounded-xl dark:bg-gradient-to-t dark:from-border dark:to-background">
+  <div ncCustomCardHeader>
+    <div class="flex items-center gap-4">
+      <hlm-avatar>
+        <img
+          hlmAvatarImage
+          src="{{ 'assets/avatars/' + ($index + 1) + '.png' }}" />
+        <span hlmAvatarFallback>AV</span>
+      </hlm-avatar>
+      <div>
+        <div hlmCardTitle class="text-foreground">
+          {{ testemonial.name }}
+        </div>
+        <div hlmCardDescription class="dark:text-washed-purple-800">
+          {{ testemonial.name | lowercase }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ncCustomCardContent>
+    <p class="dark:text-washed-purple-800">
+      {{ testemonial.message }}
+    </p>
+  </div>
+</nc-custom-card>
+}
