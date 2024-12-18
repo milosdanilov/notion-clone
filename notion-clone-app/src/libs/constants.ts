@@ -1,3 +1,5 @@
+import { PricingCard } from './models/pricing-cards';
+
 export const USERS = [
   {
     name: 'Alice',
@@ -96,9 +98,9 @@ export const USERS = [
   },
 ];
 
-export const PRICING_CARDS = [
+export const PRICING_CARDS: PricingCard[] = [
   {
-    planType: 'Free Plan',
+    planType: 'freeplan',
     price: '0',
     description: 'Limited block trials  for teams',
     highlightFeature: '',
@@ -110,7 +112,7 @@ export const PRICING_CARDS = [
     ],
   },
   {
-    planType: 'Pro Plan',
+    planType: 'proplan',
     price: '12.99',
     description: 'Billed annually. $17 billed monthly',
     highlightFeature: 'Everything in free +',

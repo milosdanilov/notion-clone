@@ -1,0 +1,48 @@
+<div
+  class="flex flex-col-reverse sm:flex-row gap-4 justify-center sm:items-stretch items-center mt-10">
+  @for (card of pricingCards; track $index) {
+  <nc-custom-card
+    class="w-[300px] rounded-2xl dark:bg-black/40 background-blur-3xl relative"
+    [ngClass]="{
+      'border-brand-primaryPurple/70': card.planType === 'proplan'
+    }">
+    <div ncCustomCardHeader>
+      <div hlmCardTitle class="text-2xl font-semibold">
+        @if (card.planType === 'proplan') {
+        <div
+          class="hidden dark:block w-full blur-[120px] rounded-full h-32 absolute bg-brand-primaryPurple/80 -z-10 top-0">
+        </div>
+        <img
+          src="assets/icons/diamond.svg"
+          alt="Pro Plan Icon"
+          class="absolute top-6 right-6" />
+        }
+        <span>{{
+          card.planType === 'proplan' ? 'Pro plan' : 'Free plan'
+        }}</span>
+      </div>
+    </div>
+    <div ncCustomCardContent class="p-0">
+      <span class="font-normal text-2xl">${{ card.price }}</span>
+      @if (+card.price > 0) {
+      <span class="dark:text-washed-purple-800 ml-1">/mo</span>
+      }
+      <p class="dark:text-washed-purple-800">{{ card.description }}</p>
+      <button variant="btn-primary" class="whitespace-nowrap w-full mt-4">
+        {{ card.planType === 'proplan' ? 'Go Pro' : 'Get Started' }}
+      </button>
+    </div>
+    <div ncCustomCardFooter>
+      <ul class="font-normal flex mb-2 flex-col gap-4">
+        <small>{{ card.highlightFeature }}</small>
+        @for (feature of card.freatures; track $index) {
+        <li class="flex items-center gap-2">
+          <img src="assets/icons/check.svg" alt="Check Icon" />
+          {{ feature }}
+        </li>
+        }
+      </ul>
+    </div>
+  </nc-custom-card>
+  }
+</div>
