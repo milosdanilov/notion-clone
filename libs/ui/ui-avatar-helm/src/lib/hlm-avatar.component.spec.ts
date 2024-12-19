@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import {
   BrnAvatarFallbackDirective,
   BrnAvatarImageDirective,
-} from '@spartan-ng/ui-avatar-brain';
+} from '@spartan-ng/brain/avatar';
 import { HlmAvatarComponent } from './hlm-avatar.component';
 
 @Component({
@@ -14,17 +14,14 @@ import { HlmAvatarComponent } from './hlm-avatar.component';
     HlmAvatarComponent,
   ],
   template: `
-    <hlm-avatar
-      [class]="class"
-      id="fallbackOnly"
-    >
+    <hlm-avatar [class]="class" id="fallbackOnly">
       <span brnAvatarFallback>fallback</span>
     </hlm-avatar>
   `,
   standalone: true,
 })
 class MockComponent {
-  @Input() class = '';
+  @Input() public class = '';
 }
 
 describe('HlmAvatarComponent', () => {
@@ -56,13 +53,13 @@ describe('HlmAvatarComponent', () => {
   });
 
   it('should change the size when the variant is changed', () => {
-    component.variant = 'small';
+    fixture.componentRef.setInput('variant', 'small');
     fixture.detectChanges();
     expect(fixture.nativeElement.className).toContain('h-6');
     expect(fixture.nativeElement.className).toContain('w-6');
     expect(fixture.nativeElement.className).toContain('text-xs');
 
-    component.variant = 'large';
+    fixture.componentRef.setInput('variant', 'large');
     fixture.detectChanges();
     expect(fixture.nativeElement.className).toContain('h-14');
     expect(fixture.nativeElement.className).toContain('w-14');

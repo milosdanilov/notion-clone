@@ -1,6 +1,10 @@
 import { Component, PLATFORM_ID } from '@angular/core';
-import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
-import { hexColorFor, isBright } from '@spartan-ng/ui-avatar-brain';
+import {
+  type ComponentFixture,
+  TestBed,
+  fakeAsync,
+} from '@angular/core/testing';
+import { hexColorFor, isBright } from '@spartan-ng/brain/avatar';
 import { HlmAvatarFallbackDirective } from './hlm-avatar-fallback.directive';
 
 @Component({
@@ -8,17 +12,14 @@ import { HlmAvatarFallbackDirective } from './hlm-avatar-fallback.directive';
   standalone: true,
   imports: [HlmAvatarFallbackDirective],
   template: `
-    <span
-      hlmAvatarFallback
-      [class]="userCls"
-      [autoColor]="autoColor"
+    <span hlmAvatarFallback [class]="userCls" [autoColor]="autoColor"
       >fallback2</span
     >
   `,
 })
 class HlmMockComponent {
-  userCls = '';
-  autoColor = false;
+  public userCls = '';
+  public autoColor = false;
 }
 
 describe('HlmAvatarFallbackDirective', () => {
