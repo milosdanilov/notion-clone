@@ -31,7 +31,6 @@ export class CustomCardComponent {
   );
 
   protected _computedClass = computed(() => {
-    console.log(this.userNgClass());
     return hlm(cva('w-[380px]'), this.userClass(), this.userNgClass());
   });
 }
