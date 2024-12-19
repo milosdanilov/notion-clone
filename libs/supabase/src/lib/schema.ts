@@ -7,8 +7,10 @@ import {
   uuid,
   boolean,
 } from 'drizzle-orm/pg-core';
-import { prices, subscriptionStatus, users } from './../../migrations/schema';
+
 import { sql } from 'drizzle-orm';
+
+import { prices, subscriptionStatus, users } from './../../migrations/schema';
 
 export const workspaces = pgTable('workspaces', {
   id: uuid('id').defaultRandom().primaryKey().notNull(),
