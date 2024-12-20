@@ -24,9 +24,11 @@ import { cva } from 'class-variance-authority';
   templateUrl: './custom-card.component.html',
 })
 export class CustomCardComponent {
+  // eslint-disable-next-line @angular-eslint/no-input-rename
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
   public readonly userNgClass = input<ClassDictionary>(
     {},
+    // eslint-disable-next-line @angular-eslint/no-input-rename
     { alias: 'ngClass' }
   );
 
