@@ -35,6 +35,13 @@ nc-app-root {
   isolation: isolate;
 }
 
+.dm-sans-notion-clone {
+  font-family: 'DM Sans', serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
