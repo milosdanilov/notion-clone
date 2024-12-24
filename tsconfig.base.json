@@ -17,13 +17,14 @@
     "paths": {
       "@/*": ["notion-clone-app/src/*.ts"],
       "@notion-clone/supabase": ["libs/supabase/src/index.ts"],
+      "@spartan-ng/ui-avatar-helm": ["libs/ui/ui-avatar-helm/src/index.ts"],
       "@spartan-ng/ui-button-helm": ["libs/ui/ui-button-helm/src/index.ts"],
       "@spartan-ng/ui-card-helm": ["libs/ui/ui-card-helm/src/index.ts"],
-      "@spartan-ng/ui-avatar-helm": ["libs/ui/ui-avatar-helm/src/index.ts"],
       "@spartan-ng/ui-formfield-helm": [
         "libs/ui/ui-formfield-helm/src/index.ts"
       ],
-      "@spartan-ng/ui-input-helm": ["libs/ui/ui-input-helm/src/index.ts"]
+      "@spartan-ng/ui-input-helm": ["libs/ui/ui-input-helm/src/index.ts"],
+      "@spartan-ng/ui-icon-helm": ["libs/ui/ui-icon-helm/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
