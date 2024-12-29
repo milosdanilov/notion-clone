@@ -1,14 +1,8 @@
-<section
-  hlmCard
-  [class]="_computedClass()"
->
+<section hlmCard [class]="_computedClass()">
   <div hlmCardHeader>
     <ng-content select="[ncCustomCardHeader]"></ng-content>
   </div>
-  <div
-    hlmCardContent
-    class="grid gap-4"
-  >
+  <div hlmCardContent class="grid gap-4">
     <ng-content select="[ncCustomCardContent]"></ng-content>
   </div>
   <div hlmCardFooter>
