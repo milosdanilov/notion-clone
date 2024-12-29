@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["notion-clone-app/src/*.ts"],
+      "@/auth/*": ["notion-clone-app/src/libs/domain/auth/*.ts"],
       "@notion-clone/supabase": ["libs/supabase/src/index.ts"],
       "@spartan-ng/ui-avatar-helm": ["libs/ui/ui-avatar-helm/src/index.ts"],
       "@spartan-ng/ui-button-helm": ["libs/ui/ui-button-helm/src/index.ts"],
