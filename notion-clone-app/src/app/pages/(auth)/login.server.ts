@@ -1,6 +1,3 @@
-import { LoginFormScheme } from '@/auth/types';
-import { AuthClient } from '@/auth/utils/auth.server';
-
 import {
   redirect,
   type PageServerAction,
@@ -8,6 +5,8 @@ import {
 } from '@analogjs/router/server/actions';
 
 import { readFormData } from 'h3';
+
+import { AuthClient, LoginFormScheme } from '@/auth';
 
 export async function action({ event }: PageServerAction) {
   const formData = await readFormData(event);

@@ -7,7 +7,7 @@ import { HlmIconComponent } from '@spartan-ng/ui-icon-helm';
 import { FormAction } from '@analogjs/router';
 import { z } from 'zod';
 
-import { LoginFormScheme } from '@/libs/domain/auth/types';
+import { LoginFormScheme } from '@/auth';
 
 export type LoginFormErrors = z.inferFlattenedErrors<
   typeof LoginFormScheme
