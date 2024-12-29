@@ -17,6 +17,7 @@ export default defineConfig(({ mode }) => {
     },
     alias: {
       '@/': path.resolve(__dirname, './src'),
+      '@/site': path.resolve(__dirname, './src/libs/site'),
       '@/auth': path.resolve(__dirname, './src/libs/auth'),
     },
     build: {

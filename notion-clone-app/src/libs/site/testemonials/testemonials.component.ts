@@ -7,7 +7,7 @@ import {
   HlmAvatarImageDirective,
 } from '@spartan-ng/ui-avatar-helm';
 
-import { CustomCardComponent } from '../../../components/landing-page/custom-card/custom-card.component';
+import { CustomCardComponent } from '../ui/custom-card/custom-card.component';
 
 @Component({
   selector: 'nc-testemonials',

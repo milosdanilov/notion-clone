@@ -2,16 +2,15 @@ import { Component } from '@angular/core';
 
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 
-import { PRICING_CARDS, USERS } from '../../../libs/constants';
-
-import { TitleSectionComponent } from '../../../libs/components/landing-page/title-section.component';
-import { TestemonialsComponent } from '../../../libs/features/site/testemonials/testemonials.component';
-import { PricingPlansComponent } from '../../../libs/features/site/pricing-plans/pricing-plans.component';
-
 import {
-  Logo,
+  TitleSectionComponent,
+  TestemonialsComponent,
+  PricingPlansComponent,
   LogoCarouselComponent,
-} from '../../../libs/components/logo-carousel/logo-carousel.component';
+  Logo,
+  PRICING_CARDS,
+  USERS,
+} from '@/site';
 
 @Component({
   standalone: true,

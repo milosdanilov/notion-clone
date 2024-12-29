@@ -1,4 +1,4 @@
-import { PricingCard } from './models/pricing-cards';
+import { PricingCard } from '../models/pricing-cards.model';
 
 export const USERS = [
   {

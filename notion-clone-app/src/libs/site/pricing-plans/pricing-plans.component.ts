@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PricingCard } from '../../../models/pricing-cards';
+import { PricingCard } from '../models/pricing-cards.model';
 
-import { CustomCardComponent } from '../../../../libs/components/landing-page/custom-card/custom-card.component';
+import { CustomCardComponent } from '../ui/custom-card/custom-card.component';
 
 @Component({
   selector: 'nc-pricing-plans',
