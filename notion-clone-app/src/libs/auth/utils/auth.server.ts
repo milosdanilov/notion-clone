@@ -34,7 +34,7 @@ export class AuthClient {
 
   async checkEmailExists(email: string): Promise<boolean> {
     const { data } = await this.supabaseClient
-      .from('profiles')
+      .from('users')
       .select('*')
       .eq('email', email);
 
