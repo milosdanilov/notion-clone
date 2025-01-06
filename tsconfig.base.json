@@ -10,51 +10,24 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "notion-clone-app/src/*.ts"
-      ],
-      "@/auth": [
-        "notion-clone-app/src/libs/auth/index.ts"
-      ],
-      "@/site": [
-        "notion-clone-app/src/libs/site/index.ts"
-      ],
-      "@notion-clone/supabase": [
-        "libs/supabase/src/index.ts"
-      ],
-      "@spartan-ng/ui-avatar-helm": [
-        "libs/ui/ui-avatar-helm/src/index.ts"
-      ],
-      "@spartan-ng/ui-button-helm": [
-        "libs/ui/ui-button-helm/src/index.ts"
-      ],
-      "@spartan-ng/ui-card-helm": [
-        "libs/ui/ui-card-helm/src/index.ts"
-      ],
+      "@/auth": ["notion-clone-app/src/libs/auth/index.ts"],
+      "@/site": ["notion-clone-app/src/libs/site/index.ts"],
+      "@notion-clone/supabase": ["libs/supabase/src/index.ts"],
+      "@spartan-ng/ui-avatar-helm": ["libs/ui/ui-avatar-helm/src/index.ts"],
+      "@spartan-ng/ui-button-helm": ["libs/ui/ui-button-helm/src/index.ts"],
+      "@spartan-ng/ui-card-helm": ["libs/ui/ui-card-helm/src/index.ts"],
       "@spartan-ng/ui-formfield-helm": [
         "libs/ui/ui-formfield-helm/src/index.ts"
       ],
-      "@spartan-ng/ui-icon-helm": [
-        "libs/ui/ui-icon-helm/src/index.ts"
-      ],
-      "@spartan-ng/ui-input-helm": [
-        "libs/ui/ui-input-helm/src/index.ts"
-      ],
-      "@spartan-ng/ui-alert-helm": [
-        "libs/ui/ui-alert-helm/src/index.ts"
-      ]
+      "@spartan-ng/ui-icon-helm": ["libs/ui/ui-icon-helm/src/index.ts"],
+      "@spartan-ng/ui-input-helm": ["libs/ui/ui-input-helm/src/index.ts"],
+      "@spartan-ng/ui-alert-helm": ["libs/ui/ui-alert-helm/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }
