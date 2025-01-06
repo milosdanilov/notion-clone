@@ -79,7 +79,7 @@ export type LoginSubmitError = string;
           class="mr-2 animate-spin" />
         }
       </button>
-      <span class="self-center"
+      <span class="self-container"
         >Don't have an account?
         <a href="/signup" class="text-primary">Sign Up</a>
       </span>
@@ -89,7 +89,7 @@ export type LoginSubmitError = string;
     class: 'flex',
   },
 })
-export default class LoginPage {
+export default class LoginPageComponent {
   isLoading = signal<boolean>(false);
   submitError = signal<LoginSubmitError>('');
 
