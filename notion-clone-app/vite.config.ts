@@ -33,11 +33,11 @@ export default defineConfig(({ mode }) => {
     plugins: [
       analog({
         nitro: {
-          routeRules: {
-            '/': {
-              prerender: false,
-            },
-          },
+          // routeRules: {
+          //   '/': {
+          //     prerender: false,
+          //   },
+          // },
           rollupConfig: {
             plugins: [
               typescriptPaths({
