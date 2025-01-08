@@ -12,8 +12,8 @@ export class AuthClient {
   constructor() {
     // TODO: use @supabase/ssr instead for cookie based auth
     this.supabaseClient = createClient(
-      import.meta.env['NEXT_PUBLIC_SUPABASE_URL'],
-      import.meta.env['NEXT_PUBLIC_SUPABASE_ANON_KEY']
+      import.meta.env['VITE_PUBLIC_SUPABASE_URL'],
+      import.meta.env['VITE_PUBLIC_SUPABASE_ANON_KEY']
     );
   }
 
@@ -43,5 +43,9 @@ export class AuthClient {
 
   getSessionFromCode(code: string): Promise<AuthTokenResponse> {
     return this.supabaseClient.auth.exchangeCodeForSession(code);
+  }
+
+  getSession() {
+    return this.supabaseClient.auth.getSession();
   }
 }
