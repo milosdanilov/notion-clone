@@ -38,8 +38,10 @@ export class AuthClient {
       .select('*')
       .eq('email', email);
 
-    console.log(data);
-
     return !!data?.length;
+  }
+
+  getSessionFromCode(code: string): Promise<AuthTokenResponse> {
+    return this.supabaseClient.auth.exchangeCodeForSession(code);
   }
 }
