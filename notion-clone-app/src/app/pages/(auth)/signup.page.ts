@@ -1,4 +1,5 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 import { FormAction } from '@analogjs/router';
 
@@ -22,6 +23,8 @@ import { clsx } from 'clsx';
 import { z } from 'zod';
 
 import { SignUpFormSchema } from '@/auth';
+import { ActivatedRoute, Router } from '@angular/router';
+import { filter, map } from 'rxjs';
 
 export type SignUpFormErrors = z.inferFlattenedErrors<
   typeof SignUpFormSchema
@@ -129,12 +132,19 @@ export type SignUpSubmitError = string;
   },
 })
 export default class SignUpPageComponent {
+  private route = inject(ActivatedRoute);
+
   isLoading = signal<boolean>(false);
   submitError = signal<SignUpSubmitError>('');
 
   confirmation = signal<boolean>(false);
-  // TODO: need a proper code exchange error logic
-  codeExchangeError = signal<string>('');
+
+  codeExchangeError = toSignal(
+    this.route.queryParams.pipe(
+      filter((param) => Boolean(param['error_message'])),
+      map((param) => param['error_message'])
+    )
+  );
 
   confirmationAndErrorStyles = computed(() =>
     clsx('bg-primary', {

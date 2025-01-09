@@ -6,7 +6,7 @@ import {
 
 import { readFormData } from 'h3';
 
-import { AuthClient, SignUpFormSchema } from '@/auth';
+import { createServerClient, SignUpFormSchema } from '@/auth';
 
 export async function action({ event }: PageServerAction) {
   const formData = await readFormData(event);
@@ -18,7 +18,7 @@ export async function action({ event }: PageServerAction) {
     return fail(400, validatedSignUpFormData.error.flatten().fieldErrors);
   }
 
-  const client = new AuthClient();
+  const client = createServerClient(event);
 
   const { email, password } = validatedSignUpFormData.data;
 
