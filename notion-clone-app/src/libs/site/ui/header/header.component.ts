@@ -9,7 +9,7 @@ import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
   imports: [HlmButtonDirective, RouterLink],
   template: `
     <header class="p-4 flex justify-center items-center">
-      <a href="/" class="w-full flex gap-2 justify-left items-center">
+      <a routerLink="/" class="w-full flex gap-2 justify-left items-center">
         <img
           src="/assets/cypresslogo.svg"
           alt="Cypress logo"
@@ -23,7 +23,7 @@ import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
             >Login</button
           >
         </a>
-        <a href="/signup">
+        <a routerLink="/signup">
           <button hlmBtn variant="btn-primary" class="whitespace-nowrap"
             >Sign Up</button
           >
