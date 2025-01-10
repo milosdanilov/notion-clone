@@ -1,7 +1,11 @@
 import { Component, computed, inject, signal } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { toSignal } from '@angular/core/rxjs-interop';
 
 import { FormAction } from '@analogjs/router';
+
+import { filter, map } from 'rxjs';
 
 import { lucideLoaderCircle, lucideMailCheck } from '@ng-icons/lucide';
 import { provideIcons } from '@ng-icons/core';
@@ -23,8 +27,6 @@ import { clsx } from 'clsx';
 import { z } from 'zod';
 
 import { SignUpFormSchema } from '@/auth';
-import { ActivatedRoute, Router } from '@angular/router';
-import { filter, map } from 'rxjs';
 
 export type SignUpFormErrors = z.inferFlattenedErrors<
   typeof SignUpFormSchema
