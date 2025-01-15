@@ -18,6 +18,7 @@ export default defineConfig(({ mode }) => {
     alias: {
       '@/site': path.resolve(__dirname, './src/libs/site'),
       '@/auth': path.resolve(__dirname, './src/libs/auth'),
+      '@/dashboard': path.resolve(__dirname, './src/libs/dashboard'),
     },
     build: {
       outDir: '../dist/./notion-clone-app/client',
