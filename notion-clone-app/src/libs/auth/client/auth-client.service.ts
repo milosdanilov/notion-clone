@@ -9,6 +9,11 @@ import { BaseSupabaseClient } from '../impl/supabase-client';
   providedIn: 'root',
 })
 export class AuthClientService extends BaseSupabaseClient {
+  constructor() {
+    super();
+    this.client = this.createAuthClient();
+  }
+
   override createAuthClient(): SupabaseClient {
     return createBrowserClient(
       import.meta.env['VITE_PUBLIC_SUPABASE_URL'],

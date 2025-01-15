@@ -9,10 +9,6 @@ import {
 export abstract class BaseSupabaseClient {
   protected client!: SupabaseClient;
 
-  constructor() {
-    this.client = this.createAuthClient();
-  }
-
   abstract createAuthClient(): SupabaseClient;
 
   login(email: string, password: string): Promise<AuthTokenResponsePassword> {

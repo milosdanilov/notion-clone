@@ -13,6 +13,7 @@ import { BaseSupabaseClient } from '../impl/supabase-client';
 export class AuthServerClient extends BaseSupabaseClient {
   constructor(private context: ServerContext) {
     super();
+    this.client = this.createAuthClient();
   }
 
   override createAuthClient(): SupabaseClient {
