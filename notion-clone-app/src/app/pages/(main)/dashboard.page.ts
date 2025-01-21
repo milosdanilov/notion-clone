@@ -10,9 +10,9 @@ import { load } from './dashboard.server';
   standalone: true,
   imports: [DashboardSetupComponent],
   template: `
-    <div
-      class="bg-background h-screen w-screen flex justify-center items-center">
+    <div class="bg-background">
       <nc-dashboard-setup
+        class="h-screen w-screen flex justify-center items-center"
         [user]="load()?.user"
         [subscription]="load()?.subscription"></nc-dashboard-setup>
     </div>
