@@ -1,4 +1,4 @@
 export interface QueryResult<T> {
-  data: T;
-  error: string;
+  data: T | null;
+  error: string | null;
 }
