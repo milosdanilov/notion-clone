@@ -16,9 +16,10 @@
     "baseUrl": ".",
     "paths": {
       "@/auth": ["notion-clone-app/src/libs/auth/index.ts"],
-      "@/site": ["notion-clone-app/src/libs/site/index.ts"],
       "@/dashboard": ["notion-clone-app/src/libs/dashboard/index.ts"],
+      "@/site": ["notion-clone-app/src/libs/site/index.ts"],
       "@notion-clone/supabase": ["libs/supabase/src/index.ts"],
+      "@spartan-ng/ui-alert-helm": ["libs/ui/ui-alert-helm/src/index.ts"],
       "@spartan-ng/ui-avatar-helm": ["libs/ui/ui-avatar-helm/src/index.ts"],
       "@spartan-ng/ui-button-helm": ["libs/ui/ui-button-helm/src/index.ts"],
       "@spartan-ng/ui-card-helm": ["libs/ui/ui-card-helm/src/index.ts"],
@@ -27,7 +28,7 @@
       ],
       "@spartan-ng/ui-icon-helm": ["libs/ui/ui-icon-helm/src/index.ts"],
       "@spartan-ng/ui-input-helm": ["libs/ui/ui-input-helm/src/index.ts"],
-      "@spartan-ng/ui-alert-helm": ["libs/ui/ui-alert-helm/src/index.ts"]
+      "@spartan-ng/ui-popover-helm": ["libs/ui/ui-popover-helm/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
