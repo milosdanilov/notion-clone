@@ -28,5 +28,5 @@ export async function action({ event }: PageServerAction) {
     return fail(error.status || 400, error.message);
   }
 
-  return redirect('/');
+  return redirect('/dashboard');
 }
