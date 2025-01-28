@@ -7,6 +7,8 @@ import { HlmFormFieldModule } from '@spartan-ng/ui-formfield-helm';
 import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
 import { HlmIconComponent } from '@spartan-ng/ui-icon-helm';
 
+import { DisableCtrlDirective } from '@notion-clone/ui-utils';
+
 import { LoginFormScheme } from '@/auth';
 import { zodValidator } from '@/utils';
 
@@ -21,6 +23,7 @@ import { type LoginSubmitErrors } from './login.server';
     HlmIconComponent,
     FormAction,
     ReactiveFormsModule,
+    DisableCtrlDirective,
   ],
   template: `
     <form
@@ -49,7 +52,7 @@ import { type LoginSubmitErrors } from './login.server';
           type="text"
           name="email"
           placeholder="Email"
-          [disabled]="isLoading()" />
+          [uiDisableCtrl]="isLoading()" />
         @if (form.controls.email.errors) {
         <hlm-error>{{ form.controls.email.errors['zodError'] }}</hlm-error>
         }
@@ -62,7 +65,7 @@ import { type LoginSubmitErrors } from './login.server';
           type="password"
           name="password"
           placeholder="Password"
-          [disabled]="isLoading()" />
+          [uiDisableCtrl]="isLoading()" />
         @if (form.controls.password.errors) {
         <hlm-error>{{ form.controls.password.errors['zodError'] }}</hlm-error>
         }
