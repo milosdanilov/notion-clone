@@ -82,7 +82,7 @@ import { type LoginSubmitErrors } from './login.server';
         type="submit"
         class="w-full p-6"
         size="lg"
-        [disabled]="isLoading()">
+        [disabled]="isLoading() || form.invalid">
         @if (!isLoading()) {
         <span>Login</span>
         } @else {
