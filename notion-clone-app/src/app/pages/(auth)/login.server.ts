@@ -7,6 +7,13 @@ import {
 import { readFormData } from 'h3';
 
 import { createServerClient, LoginFormScheme } from '@/auth';
+import { z } from 'zod';
+
+export type LoginSubmitErrors = Partial<
+  z.inferFlattenedErrors<typeof LoginFormScheme>['fieldErrors'] & {
+    auth: string[];
+  }
+>;
 
 export async function action({ event }: PageServerAction) {
   const formData = await readFormData(event);
@@ -15,7 +22,10 @@ export async function action({ event }: PageServerAction) {
   const validatedLoginFormData = LoginFormScheme.safeParse(loginFormData);
 
   if (!validatedLoginFormData.success) {
-    return fail(400, validatedLoginFormData.error.flatten().fieldErrors);
+    return fail<LoginSubmitErrors>(
+      422,
+      validatedLoginFormData.error.flatten().fieldErrors
+    );
   }
 
   const client = createServerClient(event);
@@ -25,7 +35,9 @@ export async function action({ event }: PageServerAction) {
   const { error } = await client.login(email, password);
 
   if (error) {
-    return fail(error.status || 400, error.message);
+    return fail<LoginSubmitErrors>(error.status || 400, {
+      auth: [error.message],
+    });
   }
 
   return redirect('/dashboard');

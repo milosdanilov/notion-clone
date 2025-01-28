@@ -18,6 +18,7 @@
       "@/auth": ["notion-clone-app/src/libs/auth/index.ts"],
       "@/dashboard": ["notion-clone-app/src/libs/dashboard/index.ts"],
       "@/site": ["notion-clone-app/src/libs/site/index.ts"],
+      "@/utils": ["notion-clone-app/src/libs/utils/index.ts"],
       "@notion-clone/emoji-picker": ["libs/ui/emoji-picker/src/index.ts"],
       "@notion-clone/supabase": ["libs/supabase/src/index.ts"],
       "@spartan-ng/ui-alert-helm": ["libs/ui/ui-alert-helm/src/index.ts"],

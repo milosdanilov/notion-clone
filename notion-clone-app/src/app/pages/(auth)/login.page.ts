@@ -1,19 +1,16 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormAction } from '@analogjs/router';
 
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 import { HlmFormFieldModule } from '@spartan-ng/ui-formfield-helm';
 import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
 import { HlmIconComponent } from '@spartan-ng/ui-icon-helm';
-import { FormAction } from '@analogjs/router';
-import { z } from 'zod';
 
 import { LoginFormScheme } from '@/auth';
+import { zodValidator } from '@/utils';
 
-export type LoginFormErrors = z.inferFlattenedErrors<
-  typeof LoginFormScheme
->['fieldErrors'];
-
-export type LoginSubmitError = string;
+import { type LoginSubmitErrors } from './login.server';
 
 @Component({
   standalone: true,
@@ -23,12 +20,13 @@ export type LoginSubmitError = string;
     HlmButtonDirective,
     HlmIconComponent,
     FormAction,
+    ReactiveFormsModule,
   ],
   template: `
     <form
       method="post"
+      [formGroup]="form"
       class="w-full sm:justify-center sm:w-[400px] space-y-6 flex flex-col"
-      (onSuccess)="onLoginSuccess()"
       (onError)="onLoginError($any($event))"
       (state)="onFormStateChange($event)">
       <a href="/" class="w-full flex justify-left items-center">
@@ -47,22 +45,30 @@ export type LoginSubmitError = string;
       <hlm-form-field>
         <input
           hlmInput
+          formControlName="email"
           type="text"
           name="email"
           placeholder="Email"
           [disabled]="isLoading()" />
+        @if (form.controls.email.errors) {
+        <hlm-error>{{ form.controls.email.errors['zodError'] }}</hlm-error>
+        }
       </hlm-form-field>
 
       <hlm-form-field>
         <input
           hlmInput
+          formControlName="password"
           type="password"
           name="password"
           placeholder="Password"
           [disabled]="isLoading()" />
+        @if (form.controls.password.errors) {
+        <hlm-error>{{ form.controls.password.errors['zodError'] }}</hlm-error>
+        }
       </hlm-form-field>
-      @if (submitError()) {
-      <hlm-error>{{ submitError() }}</hlm-error>
+      @if (submitError().auth) {
+      <hlm-error>{{ submitError().auth }}</hlm-error>
       }
       <button
         hlmBtn
@@ -90,28 +96,27 @@ export type LoginSubmitError = string;
   },
 })
 export default class LoginPageComponent {
+  private fb = inject(FormBuilder);
+
+  form = this.fb.nonNullable.group(
+    {
+      email: [''],
+      password: [''],
+    },
+    { validators: zodValidator(LoginFormScheme) }
+  );
+
   isLoading = signal<boolean>(false);
-  submitError = signal<LoginSubmitError>('');
+  submitError = signal<LoginSubmitErrors>({});
 
-  onLoginError(errors: LoginFormErrors | LoginSubmitError) {
-    const err =
-      typeof errors === 'string'
-        ? errors
-        : Object.values(errors)
-            .reduce((allErr, currErr) => [...allErr, ...currErr], [])
-            .join(', ');
-
-    this.submitError.set(err);
-  }
-
-  onLoginSuccess() {
-    console.log('onLoginSuccess');
+  onLoginError(errors: LoginSubmitErrors) {
+    this.submitError.set(errors);
   }
 
   onFormStateChange(state: string) {
     if (state === 'submitting') {
       this.isLoading.set(true);
-      this.submitError.set('');
+      this.submitError.set({});
     } else {
       this.isLoading.set(false);
     }
