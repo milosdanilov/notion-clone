@@ -2,6 +2,9 @@ import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { FormAction } from '@analogjs/router';
 
+import { provideIcons } from '@ng-icons/core';
+import { lucideLoaderCircle } from '@ng-icons/lucide';
+
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 import { HlmFormFieldModule } from '@spartan-ng/ui-formfield-helm';
 import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
@@ -25,6 +28,7 @@ import { type LoginSubmitErrors } from './login.server';
     ReactiveFormsModule,
     DisableCtrlDirective,
   ],
+  providers: [provideIcons({ lucideLoaderCircle })],
   template: `
     <form
       method="post"
