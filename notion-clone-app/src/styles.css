@@ -1,4 +1,5 @@
 @import '@angular/cdk/overlay-prebuilt.css';
+@import '@ctrl/ngx-emoji-mart/picker';
 
 /*
 Allow percentage-based heights in the application
