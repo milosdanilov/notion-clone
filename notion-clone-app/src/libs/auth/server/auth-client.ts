@@ -8,7 +8,7 @@ import {
 
 import { SupabaseClient } from '@supabase/supabase-js';
 
-import { BaseSupabaseClient } from '../impl/supabase-client';
+import { BaseSupabaseClient } from '@notion-clone/supabase';
 
 export class AuthServerClient extends BaseSupabaseClient {
   constructor(private context: ServerContext) {

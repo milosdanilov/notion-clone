@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { createBrowserClient } from '@supabase/ssr';
 import { SupabaseClient } from '@supabase/supabase-js';
 
-import { BaseSupabaseClient } from '../impl/supabase-client';
+import { BaseSupabaseClient } from '@notion-clone/supabase';
 
 @Injectable({
   providedIn: 'root',
