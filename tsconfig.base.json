@@ -22,6 +22,8 @@
       "@notion-clone/emoji-picker": ["libs/ui/emoji-picker/src/index.ts"],
       "@notion-clone/supabase": ["libs/supabase/src/index.ts"],
       "@notion-clone/ui-utils": ["libs/ui/ui-utils/src/index.ts"],
+      "@notion-clone/workspace/client": ["libs/workspace/client/src/index.ts"],
+      "@notion-clone/workspace/server": ["libs/workspace/server/src/index.ts"],
       "@spartan-ng/ui-alert-helm": ["libs/ui/ui-alert-helm/src/index.ts"],
       "@spartan-ng/ui-avatar-helm": ["libs/ui/ui-avatar-helm/src/index.ts"],
       "@spartan-ng/ui-button-helm": ["libs/ui/ui-button-helm/src/index.ts"],
