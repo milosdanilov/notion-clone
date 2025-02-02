@@ -1,6 +1,8 @@
-import { createServerClient } from '@/auth';
 import { EmailOtpType } from '@supabase/supabase-js';
+
 import { defineEventHandler, getRequestURL, sendRedirect } from 'h3';
+
+import { createAuthClient } from '@/utils';
 
 export default defineEventHandler(async (event) => {
   const reqUrl = getRequestURL(event);
@@ -13,7 +15,7 @@ export default defineEventHandler(async (event) => {
     return sendRedirect(event, '/signup');
   }
 
-  const client = createServerClient(event);
+  const client = createAuthClient(event);
   const { error } = await client.confirmEmail(tokenHash, type);
 
   if (!error) {

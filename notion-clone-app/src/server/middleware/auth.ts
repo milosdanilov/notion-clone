@@ -1,9 +1,9 @@
 import { defineEventHandler, getRequestURL, sendRedirect } from 'h3';
 
-import { createServerClient } from '@/auth';
+import { createAuthClient } from '@/utils';
 
 export default defineEventHandler(async (event) => {
-  const client = createServerClient(event);
+  const client = createAuthClient(event);
   const { data } = await client.getSession();
 
   const req = getRequestURL(event);

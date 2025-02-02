@@ -5,9 +5,10 @@ import {
 } from '@analogjs/router/server/actions';
 
 import { readFormData } from 'h3';
-
-import { createServerClient, LoginFormScheme } from '@/auth';
 import { z } from 'zod';
+
+import { LoginFormScheme } from '@/auth';
+import { createAuthClient } from '@/utils';
 
 export type LoginSubmitErrors = Partial<
   z.inferFlattenedErrors<typeof LoginFormScheme>['fieldErrors'] & {
@@ -28,11 +29,11 @@ export async function action({ event }: PageServerAction) {
     );
   }
 
-  const client = createServerClient(event);
+  const authClient = createAuthClient(event);
 
   const { email, password } = validatedLoginFormData.data;
 
-  const { error } = await client.login(email, password);
+  const { error } = await authClient.login(email, password);
 
   if (error) {
     return fail<LoginSubmitErrors>(error.status || 400, {

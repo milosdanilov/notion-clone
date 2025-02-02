@@ -6,7 +6,8 @@ import {
 
 import { readFormData } from 'h3';
 
-import { createServerClient, SignUpFormSchema } from '@/auth';
+import { SignUpFormSchema } from '@/auth';
+import { createAuthClient } from '@/utils';
 
 export async function action({ event }: PageServerAction) {
   const formData = await readFormData(event);
@@ -18,7 +19,7 @@ export async function action({ event }: PageServerAction) {
     return fail(400, validatedSignUpFormData.error.flatten().fieldErrors);
   }
 
-  const client = createServerClient(event);
+  const client = createAuthClient(event);
 
   const { email, password } = validatedSignUpFormData.data;
 
@@ -26,7 +27,11 @@ export async function action({ event }: PageServerAction) {
     return fail(422, 'User already exists');
   }
 
-  const { data, error } = await client.signUp(email, password);
+  const { data, error } = await client.signUp(
+    email,
+    password,
+    `${import.meta.env['VITE_PUBLIC_SITE_URL']}/confirm`
+  );
 
   if (error) {
     return fail(error.status || 400, error.message);
