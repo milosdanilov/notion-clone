@@ -1,6 +1,8 @@
 import { Component, inject, input, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
+import { FormAction } from '@analogjs/router';
+
 import { AuthUser } from '@supabase/supabase-js';
 
 import {
@@ -13,6 +15,7 @@ import {
 
 import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
 import { HlmIconComponent } from '@spartan-ng/ui-icon-helm';
+import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 
 import {
   HlmErrorDirective,
@@ -30,7 +33,6 @@ import { Subscription } from '@notion-clone/supabase';
 import { zodValidator } from '@/utils';
 
 import { CreateWorkspaceFormSchema } from '../models/create-workspace-form.schema';
-import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 
 @Component({
   selector: 'nc-dashboard-setup',
@@ -50,6 +52,7 @@ import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
     EmojiPickerComponent,
     ReactiveFormsModule,
     DisableCtrlDirective,
+    FormAction,
   ],
   providers: [provideIcons({ lucideLoaderCircle })],
   template: `
@@ -62,13 +65,14 @@ import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
         </p>
       </div>
       <div hlmCardContent>
-        <form [formGroup]="form">
+        <form method="post" [formGroup]="form">
           <div class="flex flex-col gap-4">
-            <div class="flex items-center gap-4">
+            <div class="flex items-end gap-4">
               <div class="text-5xl">
-                <ui-emoji-picker (emojiChange)="setSelectedEmoji($event)">
-                  {{ selectedEmoji() }}
-                </ui-emoji-picker>
+                <ui-emoji-picker
+                  id="workspaceEmoji"
+                  name="workspaceEmoji"
+                  formControlName="workspaceEmoji" />
               </div>
               <hlm-form-field class="w-full">
                 <label
@@ -145,16 +149,16 @@ export class DashboardSetupComponent {
 
   form = this.fb.group(
     {
+      workspaceEmoji: ['💼'],
       workspaceName: [''],
       logo: [''],
     },
     { validators: zodValidator(CreateWorkspaceFormSchema) }
   );
 
-  selectedEmoji = signal<string>('💼');
-  isLoading = signal<boolean>(false);
-
-  setSelectedEmoji(emoji: string) {
-    this.selectedEmoji.set(emoji);
+  constructor() {
+    this.form.valueChanges.subscribe((e) => console.log(e));
   }
+
+  isLoading = signal<boolean>(false);
 }

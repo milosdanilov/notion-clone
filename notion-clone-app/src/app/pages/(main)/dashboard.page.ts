@@ -1,4 +1,4 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 import { DashboardSetupComponent } from '@/dashboard';
 import { LoadResult } from '@analogjs/router';
@@ -19,10 +19,5 @@ import { load } from './dashboard.server';
   `,
 })
 export default class DashboardPageComponent {
-  // data!: LoadResult<typeof load>;
-  // @Input() load(data: LoadResult<typeof load>) {
-  //   this.data = data;
-  // }
-
   load = input<LoadResult<typeof load>>();
 }
