@@ -8,14 +8,13 @@ import {
 
 import { readFormData } from 'h3';
 import { z } from 'zod';
-import { v4 } from 'uuid';
+
+import { getUserSubscriptionStatus } from '@notion-clone/supabase';
 
 import {
-  createWorkspace,
-  getUserSubscriptionStatus,
-  getUserWorkspace,
-  Workspace,
-} from '@notion-clone/supabase';
+  createWorkspaceModel,
+  WorkspaceRepository,
+} from '@notion-clone/workspace/server';
 
 import { createAuthClient, createStorageClient } from '@/utils';
 import { CreateWorkspaceFormSchema } from '@/dashboard';
@@ -33,7 +32,7 @@ export const load = async ({ event }: PageServerLoad) => {
 
   if (!user) return;
 
-  const workspace = await getUserWorkspace(user.id);
+  const workspace = await WorkspaceRepository.getByUserId(user.id);
 
   const { data: subscription, error: subscriptionError } =
     await getUserSubscriptionStatus(user.id);
@@ -69,11 +68,7 @@ export async function action({ event }: PageServerAction) {
 
   const { data } = validated;
 
-  const logo: File = data.logo;
-  let filePath = '';
-  const workspaceUUID = v4();
-
-  if (logo.size) {
+  const uploadLogo = async (logo: File, workspaceUUID: string) => {
     try {
       const storageClient = createStorageClient(event);
 
@@ -83,49 +78,50 @@ export async function action({ event }: PageServerAction) {
       );
 
       if (error) {
-        throw new Error(error.message);
+        throw error;
       }
-      filePath = data.path;
+
+      return data.path;
     } catch (error) {
       const err = error as Error;
-      const errorMsg = err.message || 'Could not upload your workspace logo';
-
-      return fail(400, { upload: errorMsg });
+      throw new Error(err.message || 'Could not upload your workspace logo');
     }
-  }
+  };
 
   try {
     const authClient = createAuthClient(event);
 
     const {
       data: { user },
+      error,
     } = await authClient.getUser();
 
-    console.log(user);
-    if (!user) return;
+    if (error || !user) {
+      return fail(403, {
+        userAuth: error?.message || 'User not found or authenticated',
+      });
+    }
 
-    const newWorkspace: Workspace = {
-      data: null,
-      createdAt: new Date().toISOString(),
-      iconId: data.workspaceEmoji,
-      id: workspaceUUID,
-      inTrash: '',
+    const workspaceModel = createWorkspaceModel({
       title: data.workspaceName,
       workspaceOwner: user.id,
-      logo: filePath || null,
-      bannerUrl: '',
-    };
+      iconId: data.workspaceEmoji,
+    });
 
-    console.log(newWorkspace);
-    await createWorkspace(newWorkspace);
+    const uploadedLogoPath = data.logo?.size
+      ? await uploadLogo(data.logo, workspaceModel.id)
+      : null;
+
+    workspaceModel.logo = uploadedLogoPath;
+
+    const [workspace] = await WorkspaceRepository.create(workspaceModel);
+
+    return json(workspace);
   } catch (error) {
     const err = error as Error;
-    const errorMsg =
-      err.message ||
-      `Could not create workspace with the name: ${data.workspaceName}`;
 
-    return fail(400, { createWorkspace: errorMsg });
+    return fail(400, {
+      generalError: err.message || 'An unexpected error occurred',
+    });
   }
-
-  return json({});
 }
