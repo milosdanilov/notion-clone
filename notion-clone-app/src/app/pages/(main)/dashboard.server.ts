@@ -19,9 +19,12 @@ import {
 import { createAuthClient, createStorageClient } from '@/utils';
 import { CreateWorkspaceFormSchema } from '@/dashboard';
 
-export type CreateWorkspaceSubmitErrors = z.inferFlattenedErrors<
-  typeof CreateWorkspaceFormSchema
->['fieldErrors'];
+export type CreateWorkspaceSubmitErrors = Partial<
+  z.inferFlattenedErrors<typeof CreateWorkspaceFormSchema>['fieldErrors'] & {
+    auth: string[];
+    generalError: string[];
+  }
+>;
 
 export const load = async ({ event }: PageServerLoad) => {
   const authClient = createAuthClient(event);
@@ -97,8 +100,8 @@ export async function action({ event }: PageServerAction) {
     } = await authClient.getUser();
 
     if (error || !user) {
-      return fail(403, {
-        userAuth: error?.message || 'User not found or authenticated',
+      return fail<CreateWorkspaceSubmitErrors>(403, {
+        auth: [error?.message || 'User not found or authenticated'],
       });
     }
 
@@ -116,12 +119,12 @@ export async function action({ event }: PageServerAction) {
 
     const [workspace] = await WorkspaceRepository.create(workspaceModel);
 
-    return json(workspace);
+    return json({ type: 'success', workspace });
   } catch (error) {
     const err = error as Error;
 
-    return fail(400, {
-      generalError: err.message || 'An unexpected error occurred',
+    return fail<CreateWorkspaceSubmitErrors>(400, {
+      generalError: [err.message || 'An unexpected error occurred'],
     });
   }
 }

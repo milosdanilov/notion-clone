@@ -34,7 +34,7 @@ import { Subscription } from '@notion-clone/supabase';
 import { zodValidator } from '@/utils';
 import { CreateWorkspaceFormSchema } from '@/dashboard';
 
-import { load } from './dashboard.server';
+import { type CreateWorkspaceSubmitErrors, load } from './dashboard.server';
 
 @Component({
   selector: 'nc-main-dashboard-page',
@@ -68,7 +68,11 @@ import { load } from './dashboard.server';
           </p>
         </div>
         <div hlmCardContent>
-          <form method="post" [formGroup]="form">
+          <form
+            method="post"
+            [formGroup]="form"
+            (onSuccess)="onCreateWorkspaceSuccess($any($event))"
+            (onError)="onCreateWorkspaceError($any($event))">
             <div class="flex flex-col gap-4">
               <div class="flex items-end gap-4">
                 <div class="text-5xl">
@@ -164,4 +168,12 @@ export default class DashboardPageComponent {
   );
 
   isLoading = signal<boolean>(false);
+
+  onCreateWorkspaceSuccess(res: JSON) {
+    console.log(res);
+  }
+
+  onCreateWorkspaceError(errors: CreateWorkspaceSubmitErrors) {
+    console.log(errors);
+  }
 }
