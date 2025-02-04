@@ -24,4 +24,4 @@ const migrateDb = async () => {
   }
 };
 
-migrateDb();
+// migrateDb();
