@@ -13,10 +13,11 @@ import { getUserSubscriptionStatus } from '@notion-clone/supabase';
 
 import {
   createWorkspaceModel,
+  Workspace,
   WorkspaceRepository,
 } from '@notion-clone/workspace/server';
 
-import { createAuthClient, createStorageClient } from '@/utils';
+import { createAuthClient, createStorageClient, Success } from '@/utils';
 import { CreateWorkspaceFormSchema } from '@/dashboard';
 
 export type CreateWorkspaceSubmitErrors = Partial<
@@ -25,6 +26,8 @@ export type CreateWorkspaceSubmitErrors = Partial<
     generalError: string[];
   }
 >;
+
+export type CreateWorkspaceSuccessRes = Success<{ workspace: Workspace }>;
 
 export const load = async ({ event }: PageServerLoad) => {
   const authClient = createAuthClient(event);
@@ -119,7 +122,10 @@ export async function action({ event }: PageServerAction) {
 
     const [workspace] = await WorkspaceRepository.create(workspaceModel);
 
-    return json({ type: 'success', workspace });
+    return json<CreateWorkspaceSuccessRes>({
+      type: 'success',
+      workspace,
+    });
   } catch (error) {
     const err = error as Error;
 

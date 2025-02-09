@@ -23,6 +23,8 @@ import {
   HlmHintDirective,
 } from '@spartan-ng/ui-formfield-helm';
 
+import { HlmToasterService } from '@spartan-ng/ui-sonner-helm';
+
 import { provideIcons } from '@ng-icons/core';
 import { lucideLoaderCircle } from '@ng-icons/lucide';
 
@@ -34,7 +36,11 @@ import { Subscription } from '@notion-clone/supabase';
 import { zodValidator } from '@/utils';
 import { CreateWorkspaceFormSchema } from '@/dashboard';
 
-import { type CreateWorkspaceSubmitErrors, load } from './dashboard.server';
+import {
+  type CreateWorkspaceSubmitErrors,
+  type CreateWorkspaceSuccessRes,
+  load,
+} from './dashboard.server';
 
 @Component({
   selector: 'nc-main-dashboard-page',
@@ -152,6 +158,7 @@ import { type CreateWorkspaceSubmitErrors, load } from './dashboard.server';
 })
 export default class DashboardPageComponent {
   private fb = inject(FormBuilder);
+  private toastService = inject(HlmToasterService);
 
   load = input<LoadResult<typeof load>>();
 
@@ -169,11 +176,20 @@ export default class DashboardPageComponent {
 
   isLoading = signal<boolean>(false);
 
-  onCreateWorkspaceSuccess(res: JSON) {
-    console.log(res);
+  onCreateWorkspaceSuccess(res: CreateWorkspaceSuccessRes) {
+    this.toastService.toast('Workspace Created', {
+      description: `${res.workspace.title} has been created successfully.`,
+    });
   }
 
   onCreateWorkspaceError(errors: CreateWorkspaceSubmitErrors) {
     console.log(errors);
+    const error = errors.generalError
+      ? errors.generalError.join('')
+      : `Oops! Something went wrong, and we couldn't create your workspace. Try again or come back later.`;
+
+    this.toastService.error('Could not create your workspace', {
+      description: error,
+    });
   }
 }
