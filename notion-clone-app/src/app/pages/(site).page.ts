@@ -5,6 +5,7 @@ import { HeaderComponent } from '@/site';
 
 @Component({
   standalone: true,
+  selector: 'nc-home-layout-page',
   imports: [RouterOutlet, HeaderComponent],
   template: `
     <nc-header />

@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'nc-main-layout-page',
+  selector: 'nc-dashboard-layout-page',
   standalone: true,
   imports: [RouterOutlet],
   template: `<router-outlet />`,
 })
-export default class MainLayoutPageComponent {}
+export default class DashboardLayoutPageComponent {}
