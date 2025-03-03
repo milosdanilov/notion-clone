@@ -41,7 +41,7 @@ import {
   type CreateWorkspaceSubmitErrors,
   type CreateWorkspaceSuccessRes,
   load,
-} from './(dashboard-home).server';
+} from './index.server';
 
 @Component({
   selector: 'nc-main-dashboard-page',
