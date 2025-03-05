@@ -2,6 +2,7 @@ import { EmailOtpType } from '@supabase/supabase-js';
 
 import { defineEventHandler, getRequestURL, sendRedirect } from 'h3';
 
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { createAuthClient } from '@/utils';
 
 export default defineEventHandler(async (event) => {

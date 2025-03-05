@@ -17,7 +17,9 @@ import {
   WorkspaceRepository,
 } from '@notion-clone/workspace/server';
 
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { createAuthClient, createStorageClient, Success } from '@/utils';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { CreateWorkspaceFormSchema } from '@/dashboard';
 
 export type CreateWorkspaceSubmitErrors = Partial<

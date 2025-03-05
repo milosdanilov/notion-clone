@@ -6,7 +6,9 @@ import {
 
 import { readFormData } from 'h3';
 
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { SignUpFormSchema } from '@/auth';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { createAuthClient } from '@/utils';
 
 export async function action({ event }: PageServerAction) {

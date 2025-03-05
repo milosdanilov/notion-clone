@@ -7,7 +7,9 @@ import {
 import { readFormData } from 'h3';
 import { z } from 'zod';
 
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { LoginFormScheme } from '@/auth';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { createAuthClient } from '@/utils';
 
 export type LoginSubmitErrors = Partial<
