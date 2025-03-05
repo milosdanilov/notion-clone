@@ -13,7 +13,6 @@ import { cva } from 'class-variance-authority';
 
 @Component({
   selector: 'nc-custom-card',
-  standalone: true,
   imports: [
     CommonModule,
     HlmCardDirective,

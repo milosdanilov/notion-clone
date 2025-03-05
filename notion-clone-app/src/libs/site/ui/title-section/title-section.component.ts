@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'nc-title-section',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './title-section.component.html',
 })

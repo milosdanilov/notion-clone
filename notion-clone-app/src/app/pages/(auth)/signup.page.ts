@@ -26,6 +26,7 @@ import {
 import { clsx } from 'clsx';
 import { z } from 'zod';
 
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { SignUpFormSchema } from '@/auth';
 
 export type SignUpFormErrors = z.inferFlattenedErrors<
@@ -35,7 +36,6 @@ export type SignUpFormErrors = z.inferFlattenedErrors<
 export type SignUpSubmitError = string;
 
 @Component({
-  standalone: true,
   imports: [
     HlmButtonDirective,
     HlmIconComponent,

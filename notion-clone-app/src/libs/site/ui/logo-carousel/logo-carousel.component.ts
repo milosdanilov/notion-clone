@@ -5,7 +5,6 @@ import { Logo } from '../../models/logo.model';
 
 @Component({
   selector: 'nc-logo-carousel',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './logo-carousel.component.html',
   styleUrl: './logo-carousel.component.css',

@@ -49,5 +49,6 @@
       "linter": "eslint",
       "unitTestRunner": "jest"
     }
-  }
+  },
+  "useLegacyCache": true
 }

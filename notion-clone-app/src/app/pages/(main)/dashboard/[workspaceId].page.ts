@@ -3,7 +3,6 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'nc-workspace-layout-page',
-  standalone: true,
   imports: [RouterOutlet],
   template: `
     <main class="flex overflow-hidden h-screen w-screen">

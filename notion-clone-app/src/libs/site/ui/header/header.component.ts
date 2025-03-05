@@ -5,7 +5,6 @@ import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 
 @Component({
   selector: 'nc-header',
-  standalone: true,
   imports: [HlmButtonDirective, RouterLink],
   template: `
     <header class="p-4 flex justify-center items-center">

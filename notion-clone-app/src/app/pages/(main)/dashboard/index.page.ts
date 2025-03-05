@@ -34,7 +34,9 @@ import { DisableCtrlDirective } from '@notion-clone/ui-utils';
 
 import { Subscription } from '@notion-clone/supabase';
 
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { zodValidator } from '@/utils';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { CreateWorkspaceFormSchema } from '@/dashboard';
 
 import {
@@ -45,7 +47,6 @@ import {
 
 @Component({
   selector: 'nc-main-dashboard-page',
-  standalone: true,
   imports: [
     HlmCardDirective,
     HlmCardHeaderDirective,

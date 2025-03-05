@@ -12,13 +12,14 @@ import { HlmIconComponent } from '@spartan-ng/ui-icon-helm';
 
 import { DisableCtrlDirective } from '@notion-clone/ui-utils';
 
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { LoginFormScheme } from '@/auth';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { zodValidator } from '@/utils';
 
 import { type LoginSubmitErrors } from './login.server';
 
 @Component({
-  standalone: true,
   imports: [
     HlmFormFieldModule,
     HlmInputDirective,

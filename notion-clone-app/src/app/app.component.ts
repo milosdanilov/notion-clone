@@ -5,7 +5,6 @@ import { HlmToasterComponent } from '@spartan-ng/ui-sonner-helm';
 
 @Component({
   selector: 'nc-app-root',
-  standalone: true,
   imports: [RouterOutlet, HlmToasterComponent],
   template: `
     <main>

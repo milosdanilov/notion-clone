@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import {
   TitleSectionComponent,
   TestemonialsComponent,
@@ -13,7 +14,6 @@ import {
 } from '@/site';
 
 @Component({
-  standalone: true,
   imports: [
     TitleSectionComponent,
     HlmButtonDirective,

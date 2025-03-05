@@ -11,7 +11,6 @@ import { CustomCardComponent } from '../ui/custom-card/custom-card.component';
 
 @Component({
   selector: 'nc-testemonials',
-  standalone: true,
   imports: [
     CommonModule,
     CustomCardComponent,

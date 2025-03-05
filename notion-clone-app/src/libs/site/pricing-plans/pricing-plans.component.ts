@@ -7,7 +7,6 @@ import { CustomCardComponent } from '../ui/custom-card/custom-card.component';
 
 @Component({
   selector: 'nc-pricing-plans',
-  standalone: true,
   imports: [CommonModule, CustomCardComponent],
   templateUrl: './pricing-plans.component.html',
 })

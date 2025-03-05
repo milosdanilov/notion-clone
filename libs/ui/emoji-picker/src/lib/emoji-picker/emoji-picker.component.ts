@@ -24,7 +24,6 @@ export type Emoji = EmojiData;
 
 @Component({
   selector: 'ui-emoji-picker',
-  standalone: true,
   imports: [
     CommonModule,
     PickerComponent,
