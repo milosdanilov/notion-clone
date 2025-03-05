@@ -105,9 +105,9 @@ import {
                     class="bg-transparent"
                     [uiDisableCtrl]="isLoading()" />
                   @if (form.controls.workspaceName.errors) {
-                  <hlm-error>
-                    {{ form.controls.workspaceName.errors['zodError'] }}
-                  </hlm-error>
+                    <hlm-error>
+                      {{ form.controls.workspaceName.errors['zodError'] }}
+                    </hlm-error>
                   }
                 </hlm-form-field>
               </div>
@@ -128,25 +128,26 @@ import {
                   " />
 
                 @if (form.controls.logo.errors) {
-                <hlm-error>
-                  {{ form.controls.logo.errors['zodError'] }}
-                </hlm-error>
-                } @if (subscription()?.status !== 'active') {
-                <hlm-hint class="text-muted-foreground block"
-                  >To customize your workspace, you need to be on a Pro
-                  Plan</hlm-hint
-                >
+                  <hlm-error>
+                    {{ form.controls.logo.errors['zodError'] }}
+                  </hlm-error>
+                }
+                @if (subscription()?.status !== 'active') {
+                  <hlm-hint class="text-muted-foreground block"
+                    >To customize your workspace, you need to be on a Pro
+                    Plan</hlm-hint
+                  >
                 }
               </hlm-form-field>
               <div class="self-end">
                 <button hlmBtn [disabled]="isLoading()" type="submit">
                   @if (!isLoading()) {
-                  <span>Create Workspace</span>
+                    <span>Create Workspace</span>
                   } @else {
-                  <hlm-icon
-                    name="lucideLoaderCircle"
-                    size="sm"
-                    class="mr-2 animate-spin" />
+                    <hlm-icon
+                      name="lucideLoaderCircle"
+                      size="sm"
+                      class="mr-2 animate-spin" />
                   }
                 </button>
               </div>
@@ -174,7 +175,7 @@ export default class DashboardPageComponent {
       workspaceName: [''],
       logo: [''],
     },
-    { validators: zodValidator(CreateWorkspaceFormSchema) }
+    { validators: zodValidator(CreateWorkspaceFormSchema) },
   );
 
   isLoading = signal<boolean>(false);

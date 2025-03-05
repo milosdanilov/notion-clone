@@ -78,7 +78,7 @@ export class HlmIconComponent implements OnDestroy {
   public readonly size = input<IconSize>(this._config.size);
 
   protected readonly ngIconSize = computed(() =>
-    isDefinedSize(this.size()) ? '100%' : (this.size() as string)
+    isDefinedSize(this.size()) ? '100%' : (this.size() as string),
   );
 
   public readonly color = input<string | undefined>(undefined);
@@ -107,7 +107,7 @@ export class HlmIconComponent implements OnDestroy {
         mutations.forEach((mutation: MutationRecord) => {
           if (mutation.attributeName !== 'class') return;
           this._hostClasses.set(
-            (mutation.target as Node & { className?: string })?.className ?? ''
+            (mutation.target as Node & { className?: string })?.className ?? '',
           );
         });
       });

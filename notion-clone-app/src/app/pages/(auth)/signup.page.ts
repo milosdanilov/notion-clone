@@ -69,45 +69,49 @@ export type SignUpSubmitError = string;
       </p>
 
       @if (!confirmation() && !codeExchangeError()) {
-      <hlm-form-field>
-        <input
-          hlmInput
-          type="text"
-          name="email"
-          placeholder="Email"
-          [disabled]="isLoading()" />
-      </hlm-form-field>
+        <hlm-form-field>
+          <input
+            hlmInput
+            type="text"
+            name="email"
+            placeholder="Email"
+            [disabled]="isLoading()" />
+        </hlm-form-field>
 
-      <hlm-form-field>
-        <input
-          hlmInput
-          type="password"
-          name="password"
-          placeholder="Password"
-          [disabled]="isLoading()" />
-      </hlm-form-field>
+        <hlm-form-field>
+          <input
+            hlmInput
+            type="password"
+            name="password"
+            placeholder="Password"
+            [disabled]="isLoading()" />
+        </hlm-form-field>
 
-      <hlm-form-field>
-        <input
-          hlmInput
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm Password"
-          [disabled]="isLoading()" />
-      </hlm-form-field>
-      @if (submitError()) {
-      <hlm-error>{{ submitError() }}</hlm-error>
-      }
-      <button hlmBtn type="submit" class="w-full p-6" [disabled]="isLoading()">
-        @if (!isLoading()) {
-        <span>Create Account</span>
-        } @else {
-        <hlm-icon
-          name="lucideLoaderCircle"
-          size="sm"
-          class="mr-2 animate-spin" />
+        <hlm-form-field>
+          <input
+            hlmInput
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            [disabled]="isLoading()" />
+        </hlm-form-field>
+        @if (submitError()) {
+          <hlm-error>{{ submitError() }}</hlm-error>
         }
-      </button>
+        <button
+          hlmBtn
+          type="submit"
+          class="w-full p-6"
+          [disabled]="isLoading()">
+          @if (!isLoading()) {
+            <span>Create Account</span>
+          } @else {
+            <hlm-icon
+              name="lucideLoaderCircle"
+              size="sm"
+              class="mr-2 animate-spin" />
+          }
+        </button>
       }
 
       <span class="self-container"
@@ -116,16 +120,16 @@ export type SignUpSubmitError = string;
       </span>
 
       @if (confirmation()) {
-      <div hlmAlert [class]="confirmationAndErrorStyles()">
-        <hlm-icon hlmAlertIcon name="lucideMailCheck" />
-        <h4 hlmAlertTitle>Check your email.</h4>
-        <p hlmAlertDesc>An email confirmation has been sent.</p>
-      </div>
+        <div hlmAlert [class]="confirmationAndErrorStyles()">
+          <hlm-icon hlmAlertIcon name="lucideMailCheck" />
+          <h4 hlmAlertTitle>Check your email.</h4>
+          <p hlmAlertDesc>An email confirmation has been sent.</p>
+        </div>
       } @else if (codeExchangeError()) {
-      <div hlmAlert [class]="confirmationAndErrorStyles()">
-        <h4 hlmAlertTitle>Invalid Link</h4>
-        <p hlmAlertDesc>{{ codeExchangeError() }}</p>
-      </div>
+        <div hlmAlert [class]="confirmationAndErrorStyles()">
+          <h4 hlmAlertTitle>Invalid Link</h4>
+          <p hlmAlertDesc>{{ codeExchangeError() }}</p>
+        </div>
       }
     </form>
   `,
@@ -144,8 +148,8 @@ export default class SignUpPageComponent {
   codeExchangeError = toSignal(
     this.route.queryParams.pipe(
       filter((param) => Boolean(param['error_message'])),
-      map((param) => param['error_message'])
-    )
+      map((param) => param['error_message']),
+    ),
   );
 
   confirmationAndErrorStyles = computed(() =>
@@ -153,7 +157,7 @@ export default class SignUpPageComponent {
       'bg-red-500/10': this.codeExchangeError(),
       'border-red-500/50': this.codeExchangeError(),
       'text-red-700': this.codeExchangeError(),
-    })
+    }),
   );
 
   onSignUpError(errors: SignUpFormErrors | SignUpSubmitError) {

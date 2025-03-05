@@ -37,7 +37,7 @@ export class HlmToasterComponent {
     false,
     {
       transform: booleanAttribute,
-    }
+    },
   );
   public readonly theme = input<ToasterProps['theme']>('light');
   public readonly position = input<ToasterProps['position']>('bottom-right');
@@ -52,13 +52,13 @@ export class HlmToasterComponent {
     false,
     {
       transform: booleanAttribute,
-    }
+    },
   );
   public readonly duration = input<ToasterProps['duration'], number | string>(
     4000,
     {
       transform: numberAttribute,
-    }
+    },
   );
   public readonly visibleToasts = input<
     ToasterProps['visibleToasts'],
@@ -90,10 +90,10 @@ export class HlmToasterComponent {
   public readonly userStyle = input<Record<string, string>>(
     {},
     // eslint-disable-next-line @angular-eslint/no-input-rename
-    { alias: 'style' }
+    { alias: 'style' },
   );
 
   protected readonly _computedClass = computed(() =>
-    hlm('toaster group', this.userClass())
+    hlm('toaster group', this.userClass()),
   );
 }

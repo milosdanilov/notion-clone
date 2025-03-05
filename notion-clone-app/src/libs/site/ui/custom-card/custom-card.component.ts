@@ -28,7 +28,7 @@ export class CustomCardComponent {
   public readonly userNgClass = input<ClassDictionary>(
     {},
     // eslint-disable-next-line @angular-eslint/no-input-rename
-    { alias: 'ngClass' }
+    { alias: 'ngClass' },
   );
 
   protected _computedClass = computed(() => {

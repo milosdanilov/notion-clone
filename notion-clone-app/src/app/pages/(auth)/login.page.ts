@@ -59,7 +59,7 @@ import { type LoginSubmitErrors } from './login.server';
           placeholder="Email"
           [uiDisableCtrl]="isLoading()" />
         @if (form.controls.email.errors) {
-        <hlm-error>{{ form.controls.email.errors['zodError'] }}</hlm-error>
+          <hlm-error>{{ form.controls.email.errors['zodError'] }}</hlm-error>
         }
       </hlm-form-field>
 
@@ -72,11 +72,11 @@ import { type LoginSubmitErrors } from './login.server';
           placeholder="Password"
           [uiDisableCtrl]="isLoading()" />
         @if (form.controls.password.errors) {
-        <hlm-error>{{ form.controls.password.errors['zodError'] }}</hlm-error>
+          <hlm-error>{{ form.controls.password.errors['zodError'] }}</hlm-error>
         }
       </hlm-form-field>
       @if (submitError().auth) {
-      <hlm-error>{{ submitError().auth }}</hlm-error>
+        <hlm-error>{{ submitError().auth }}</hlm-error>
       }
       <button
         hlmBtn
@@ -85,12 +85,12 @@ import { type LoginSubmitErrors } from './login.server';
         size="lg"
         [disabled]="isLoading() || form.invalid">
         @if (!isLoading()) {
-        <span>Login</span>
+          <span>Login</span>
         } @else {
-        <hlm-icon
-          name="lucideLoaderCircle"
-          size="sm"
-          class="mr-2 animate-spin" />
+          <hlm-icon
+            name="lucideLoaderCircle"
+            size="sm"
+            class="mr-2 animate-spin" />
         }
       </button>
       <span class="self-container"
@@ -111,7 +111,7 @@ export default class LoginPageComponent {
       email: [''],
       password: [''],
     },
-    { validators: zodValidator(LoginFormScheme) }
+    { validators: zodValidator(LoginFormScheme) },
   );
 
   isLoading = signal<boolean>(false);
