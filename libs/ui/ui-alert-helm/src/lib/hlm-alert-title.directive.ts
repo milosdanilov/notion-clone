@@ -7,7 +7,7 @@ export const alertTitleVariants = cva(
   'mb-1 font-medium leading-none tracking-tight',
   {
     variants: {},
-  }
+  },
 );
 export type AlertTitleVariants = VariantProps<typeof alertTitleVariants>;
 
@@ -22,6 +22,6 @@ export class HlmAlertTitleDirective {
   // eslint-disable-next-line @angular-eslint/no-input-rename
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
   protected readonly _computedClass = computed(() =>
-    hlm(alertTitleVariants(), this.userClass())
+    hlm(alertTitleVariants(), this.userClass()),
   );
 }

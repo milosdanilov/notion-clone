@@ -56,7 +56,7 @@ describe('HlmIconComponent', () => {
 
   it('should compose the user classes', () => {
     expect(r.container.querySelector('hlm-icon')?.classList).toContain(
-      'inline-flex'
+      'inline-flex',
     );
     expect(r.container.querySelector('hlm-icon')?.classList).toContain('test');
   });
@@ -67,10 +67,10 @@ describe('HlmIconComponent', () => {
     const debugEl = r.fixture.debugElement.query(By.directive(NgIconComponent));
     expect(debugEl.componentInstance.size()).toBe('2rem');
     expect(r.container.querySelector('hlm-icon')?.classList).not.toContain(
-      'h-6'
+      'h-6',
     );
     expect(r.container.querySelector('hlm-icon')?.classList).not.toContain(
-      'w-6'
+      'w-6',
     );
   });
 });

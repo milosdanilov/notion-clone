@@ -7,7 +7,7 @@ import {
 import { EventHandlerRequest, H3Event } from 'h3';
 
 export function createSupabaseClientFactory(
-  event: H3Event<EventHandlerRequest>
+  event: H3Event<EventHandlerRequest>,
 ) {
   const { req, res } = event.node;
 
@@ -23,11 +23,11 @@ export function createSupabaseClientFactory(
           cookiesToSet.forEach(({ name, value, options }) => {
             res.appendHeader(
               'Set-Cookie',
-              serializeCookieHeader(name, value, options)
+              serializeCookieHeader(name, value, options),
             );
           });
         },
       },
-    }
+    },
   );
 }

@@ -18,7 +18,7 @@ export abstract class BaseSupabaseClient {
   signUp(
     email: string,
     password: string,
-    redirectTo: string
+    redirectTo: string,
   ): Promise<AuthResponse> {
     return this.client.auth.signUp({
       email,

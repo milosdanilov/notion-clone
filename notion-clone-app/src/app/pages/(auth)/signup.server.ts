@@ -30,7 +30,7 @@ export async function action({ event }: PageServerAction) {
   const { data, error } = await client.signUp(
     email,
     password,
-    `${import.meta.env['VITE_PUBLIC_SITE_URL']}/confirm`
+    `${import.meta.env['VITE_PUBLIC_SITE_URL']}/confirm`,
   );
 
   if (error) {

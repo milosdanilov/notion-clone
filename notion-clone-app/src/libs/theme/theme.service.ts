@@ -49,7 +49,7 @@ export class ThemeService implements OnDestroy {
     if (isPlatformBrowser(this._platformId)) {
       // we load the appropriate value from the localStorage into our _theme$ replaysubject
       this._theme$.next(
-        localStorage.getItem('theme') === 'dark' ? 'dark' : 'light'
+        localStorage.getItem('theme') === 'dark' ? 'dark' : 'light',
       );
     }
   }

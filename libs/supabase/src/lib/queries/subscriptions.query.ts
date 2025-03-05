@@ -11,7 +11,7 @@ export type Subscription = InferSelectModel<typeof subscriptions>;
 // };
 
 export const getUserSubscriptionStatus = async (
-  userId: string
+  userId: string,
 ): Promise<QueryResult<Subscription>> => {
   try {
     const data = await db.query.subscriptions.findFirst({

@@ -8,7 +8,7 @@ import { getTestBed } from '@angular/core/testing';
 
 getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting()
+  platformBrowserDynamicTesting(),
 );
 
 Object.defineProperty(window, 'matchMedia', {

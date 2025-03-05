@@ -25,7 +25,7 @@ export async function action({ event }: PageServerAction) {
   if (!validatedLoginFormData.success) {
     return fail<LoginSubmitErrors>(
       422,
-      validatedLoginFormData.error.flatten().fieldErrors
+      validatedLoginFormData.error.flatten().fieldErrors,
     );
   }
 

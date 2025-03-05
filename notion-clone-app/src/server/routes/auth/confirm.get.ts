@@ -24,6 +24,6 @@ export default defineEventHandler(async (event) => {
 
   return sendRedirect(
     event,
-    `/signup?error_code=${error.code}&error_message=${error.message}`
+    `/signup?error_code=${error.code}&error_message=${error.message}`,
   );
 });

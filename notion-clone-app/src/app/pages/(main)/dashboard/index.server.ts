@@ -62,13 +62,13 @@ export async function action({ event }: PageServerAction) {
   const createDashboardFormData = Object.fromEntries(formData);
 
   const validated = CreateWorkspaceFormSchema.safeParse(
-    createDashboardFormData
+    createDashboardFormData,
   );
 
   if (!validated.success) {
     return fail<CreateWorkspaceSubmitErrors>(
       422,
-      validated.error.flatten().fieldErrors
+      validated.error.flatten().fieldErrors,
     );
   }
 
@@ -80,7 +80,7 @@ export async function action({ event }: PageServerAction) {
 
       const { data, error } = await storageClient.uploadWorkspaceLogo(
         workspaceUUID,
-        logo
+        logo,
       );
 
       if (error) {
