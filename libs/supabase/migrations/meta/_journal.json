@@ -15,6 +15,13 @@
       "when": 1734612188923,
       "tag": "0001_common_anthem",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1741294509562,
+      "tag": "0002_regular_bill_hollister",
+      "breakpoints": true
     }
   ]
 }
