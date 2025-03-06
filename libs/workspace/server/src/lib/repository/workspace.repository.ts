@@ -1,6 +1,6 @@
 import { db } from '@notion-clone/supabase';
 
-import { workspaces } from '../../../../../supabase/migrations/schema';
+import { workspaces } from 'libs/supabase/migrations/schema';
 
 import { Workspace } from '../models/workspace.model';
 

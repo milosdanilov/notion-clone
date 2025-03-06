@@ -2,7 +2,7 @@ import { InferSelectModel } from 'drizzle-orm';
 
 import { v4 } from 'uuid';
 
-import { workspaces } from '../../../../../supabase/migrations/schema';
+import { workspaces } from 'libs/supabase/migrations/schema';
 
 export type Workspace = InferSelectModel<typeof workspaces>;
 
