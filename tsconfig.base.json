@@ -21,6 +21,7 @@
       "@/utils": ["notion-clone-app/src/utils/index.ts"],
       "@notion-clone/core": ["libs/core/src/index.ts"],
       "@notion-clone/emoji-picker": ["libs/ui/emoji-picker/src/index.ts"],
+      "@notion-clone/sidebar": ["libs/sidebar/src/index.ts"],
       "@notion-clone/supabase": ["libs/supabase/src/index.ts"],
       "@notion-clone/supabase/schema": ["libs/supabase/migrations/schema.ts"],
       "@notion-clone/ui-utils": ["libs/ui/ui-utils/src/index.ts"],
