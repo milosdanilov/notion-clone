@@ -11,7 +11,7 @@
           "error",
           {
             "enforceBuildableLibDependency": true,
-            "allow": ["libs/supabase/migrations/schema"],
+            "allow": ["libs/supabase/migrations/schema", "@/utils"],
             "depConstraints": [
               {
                 "sourceTag": "*",
