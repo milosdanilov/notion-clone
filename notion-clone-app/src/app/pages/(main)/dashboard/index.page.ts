@@ -166,6 +166,7 @@ export default class DashboardPageComponent {
 
   load = input<LoadResult<typeof load>>();
 
+  // TODO: check, this is probably null, should use load.subscription instead.
   subscription = input<Subscription | null>();
   user = input<AuthUser>();
 
