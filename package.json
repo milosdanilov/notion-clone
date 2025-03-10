@@ -86,7 +86,6 @@
     "@spartan-ng/ui-avatar-brain": "^0.0.1-alpha.374",
     "@spartan-ng/ui-core": "^0.0.1-alpha.374",
     "@spartan-ng/ui-formfield-brain": "^0.0.1-alpha.374",
-    "@spartan-ng/ui-popover-brain": "^0.0.1-alpha.374",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.47.10",
     "@trpc/client": "^10.25.0",
