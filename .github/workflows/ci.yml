@@ -11,8 +11,11 @@ permissions:
   contents: read
 
 jobs:
-  main:
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -22,12 +25,19 @@ jobs:
       # The "--stop-agents-after" is optional, but allows idle agents to shut down once the "build" targets have been requested
       # - run: npx nx-cloud start-ci-run --distribute-on="5 linux-medium-js" --stop-agents-after="build"
 
-      # Cache node_modules
-      - uses: actions/setup-node@v3
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          node-version: 20
-          cache: 'npm'
-      - run: npm ci
+          version: 10
+      # Cache node_modules
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+
       - uses: nrwl/nx-set-shas@v4
 
       - run: git branch --track main origin/main

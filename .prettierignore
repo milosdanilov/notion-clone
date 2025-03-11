@@ -7,3 +7,4 @@
 /libs/supabase/migrations
 
 /.nx/workspace-data
+pnpm-lock.yaml
