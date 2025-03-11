@@ -2,7 +2,9 @@
   "name": "@notion-clone/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "prepare": "husky install"
+  },
   "private": true,
   "devDependencies": {
     "@analogjs/platform": "1.14.0",
@@ -97,6 +99,7 @@
     "front-matter": "^4.0.2",
     "h3": "1.15.1",
     "isomorphic-fetch": "^3.0.0",
+    "lint-staged": "^15.4.3",
     "marked": "^5.0.2",
     "marked-gfm-heading-id": "^3.1.0",
     "marked-highlight": "^2.0.1",
@@ -111,5 +114,9 @@
     "uuid": "^11.0.5",
     "zod": "^3.21.4",
     "zone.js": "0.15.0"
+  },
+  "lint-staged": {
+    "*.{js,ts,css,scss,html,json,md}": "nx format:write --uncommitted",
+    "*.{ts,html}": "eslint --cache --fix"
   }
 }
