@@ -31,14 +31,14 @@
       "@spartan-ng/ui-avatar-helm": ["libs/ui/ui-avatar-helm/src/index.ts"],
       "@spartan-ng/ui-button-helm": ["libs/ui/ui-button-helm/src/index.ts"],
       "@spartan-ng/ui-card-helm": ["libs/ui/ui-card-helm/src/index.ts"],
+      "@spartan-ng/ui-dialog-helm": ["libs/ui/ui-dialog-helm/src/index.ts"],
       "@spartan-ng/ui-formfield-helm": [
         "libs/ui/ui-formfield-helm/src/index.ts"
       ],
       "@spartan-ng/ui-icon-helm": ["libs/ui/ui-icon-helm/src/index.ts"],
       "@spartan-ng/ui-input-helm": ["libs/ui/ui-input-helm/src/index.ts"],
       "@spartan-ng/ui-popover-helm": ["libs/ui/ui-popover-helm/src/index.ts"],
-      "@spartan-ng/ui-sonner-helm": ["libs/ui/ui-sonner-helm/src/index.ts"],
-      "@spartan-ng/ui-dialog-helm": ["libs/ui/ui-dialog-helm/src/index.ts"]
+      "@spartan-ng/ui-sonner-helm": ["libs/ui/ui-sonner-helm/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
