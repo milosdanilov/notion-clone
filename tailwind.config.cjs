@@ -5,8 +5,8 @@ const { join } = require('path');
 module.exports = {
   presets: [require('@spartan-ng/ui-core/hlm-tailwind-preset')],
   content: [
-    join(__dirname, 'src/**/!(*.stories|*.spec).{ts,html}'),
-    ...createGlobPatternsForDependencies(__dirname),
+    join(__dirname, 'notion-clone-app/src/**/!(*.stories|*.spec).{ts,html}'),
+    ...createGlobPatternsForDependencies(join(__dirname, 'notion-clone-app')),
   ],
   darkMode: 'class',
   theme: {
