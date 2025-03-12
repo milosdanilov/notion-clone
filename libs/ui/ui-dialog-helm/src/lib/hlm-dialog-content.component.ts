@@ -59,6 +59,7 @@ export class HlmDialogContentComponent {
   private readonly _dynamicComponentClass =
     this._dialogContext?.$dynamicComponentClass;
 
+  // eslint-disable-next-line @angular-eslint/no-input-rename
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
   protected readonly _computedClass = computed(() =>
     hlm(

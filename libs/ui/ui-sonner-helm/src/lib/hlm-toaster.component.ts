@@ -85,6 +85,7 @@ export class HlmToasterComponent {
   });
   public readonly offset = input<ToasterProps['offset']>(null);
   public readonly dir = input<ToasterProps['dir']>('auto');
+  // eslint-disable-next-line @angular-eslint/no-input-rename
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
   public readonly userStyle = input<Record<string, string>>(
     {},

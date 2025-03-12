@@ -19,12 +19,6 @@
               }
             ]
           }
-        ],
-        "@angular-eslint/no-input-rename": [
-          "error",
-          {
-            "allowedNames": ["class", "ngClass"]
-          }
         ]
       }
     },

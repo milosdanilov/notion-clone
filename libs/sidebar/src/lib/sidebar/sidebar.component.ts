@@ -21,6 +21,7 @@ import { Workspace } from '@notion-clone/workspace/server';
   `,
 })
 export class SidebarComponent {
+  // eslint-disable-next-line @angular-eslint/no-input-rename
   readonly userClass = input<ClassValue>('', { alias: 'class' });
 
   asideStyles = computed(() =>

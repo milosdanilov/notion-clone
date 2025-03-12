@@ -60,6 +60,7 @@ export class HlmInputDirective implements BrnFormFieldControl, DoCheck {
     error: signal(this.error()),
   }));
 
+  // eslint-disable-next-line @angular-eslint/no-input-rename
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
   protected readonly _computedClass = computed(() =>
     hlm(

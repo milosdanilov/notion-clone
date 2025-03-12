@@ -29,6 +29,7 @@ export type AlertVariants = VariantProps<typeof alertVariants>;
   },
 })
 export class HlmAlertDirective {
+  // eslint-disable-next-line @angular-eslint/no-input-rename
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
   protected readonly _computedClass = computed(() =>
     hlm(alertVariants({ variant: this.variant() }), this.userClass()),

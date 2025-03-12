@@ -11,6 +11,7 @@ import type { ClassValue } from 'clsx';
   },
 })
 export class HlmDialogFooterComponent {
+  // eslint-disable-next-line @angular-eslint/no-input-rename
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
   protected _computedClass = computed(() =>
     hlm(

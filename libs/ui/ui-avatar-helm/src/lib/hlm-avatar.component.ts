@@ -45,6 +45,7 @@ export type AvatarVariants = VariantProps<typeof avatarVariants>;
   `,
 })
 export class HlmAvatarComponent extends BrnAvatarComponent {
+  // eslint-disable-next-line @angular-eslint/no-input-rename
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
   public readonly variant = input<AvatarVariants['variant']>('medium');
 

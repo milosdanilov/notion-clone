@@ -24,6 +24,7 @@ export type CardHeaderVariants = VariantProps<typeof cardHeaderVariants>;
   },
 })
 export class HlmCardHeaderDirective {
+  // eslint-disable-next-line @angular-eslint/no-input-rename
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
   protected _computedClass = computed(() =>
     hlm(cardHeaderVariants({ direction: this.direction() }), this.userClass()),
