@@ -8,7 +8,7 @@ import {
   HlmCardFooterDirective,
 } from '@spartan-ng/ui-card-helm';
 import { ClassValue, ClassDictionary } from 'clsx';
-import { hlm } from '@spartan-ng/ui-core';
+import { hlm } from '@spartan-ng/brain/core';
 import { cva } from 'class-variance-authority';
 
 @Component({

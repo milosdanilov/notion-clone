@@ -1,3 +1,4 @@
+import { NgIcon } from '@ng-icons/core';
 import { Component, computed, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -10,7 +11,7 @@ import { filter, map } from 'rxjs';
 import { lucideLoaderCircle, lucideMailCheck } from '@ng-icons/lucide';
 import { provideIcons } from '@ng-icons/core';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
-import { HlmIconComponent } from '@spartan-ng/ui-icon-helm';
+import { HlmIconDirective } from '@spartan-ng/ui-icon-helm';
 import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
 
 import {
@@ -38,7 +39,8 @@ export type SignUpSubmitError = string;
 @Component({
   imports: [
     HlmButtonDirective,
-    HlmIconComponent,
+    NgIcon,
+    HlmIconDirective,
     HlmFormFieldComponent,
     HlmInputDirective,
     HlmErrorDirective,
@@ -106,7 +108,8 @@ export type SignUpSubmitError = string;
           @if (!isLoading()) {
             <span>Create Account</span>
           } @else {
-            <hlm-icon
+            <ng-icon
+              hlm
               name="lucideLoaderCircle"
               size="sm"
               class="mr-2 animate-spin" />
@@ -121,7 +124,7 @@ export type SignUpSubmitError = string;
 
       @if (confirmation()) {
         <div hlmAlert [class]="confirmationAndErrorStyles()">
-          <hlm-icon hlmAlertIcon name="lucideMailCheck" />
+          <ng-icon hlm hlmAlertIcon name="lucideMailCheck" />
           <h4 hlmAlertTitle>Check your email.</h4>
           <p hlmAlertDesc>An email confirmation has been sent.</p>
         </div>

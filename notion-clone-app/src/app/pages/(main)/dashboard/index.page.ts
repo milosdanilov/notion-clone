@@ -1,3 +1,4 @@
+import { NgIcon } from '@ng-icons/core';
 import { Component, inject, input, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,7 +16,7 @@ import {
 } from '@spartan-ng/ui-card-helm';
 
 import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
-import { HlmIconComponent } from '@spartan-ng/ui-icon-helm';
+import { HlmIconDirective } from '@spartan-ng/ui-icon-helm';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 
 import {
@@ -57,7 +58,8 @@ import {
     HlmErrorDirective,
     HlmInputDirective,
     HlmHintDirective,
-    HlmIconComponent,
+    NgIcon,
+    HlmIconDirective,
     HlmButtonDirective,
     EmojiPickerComponent,
     ReactiveFormsModule,
@@ -144,7 +146,8 @@ import {
                   @if (!isLoading()) {
                     <span>Create Workspace</span>
                   } @else {
-                    <hlm-icon
+                    <ng-icon
+                      hlm
                       name="lucideLoaderCircle"
                       size="sm"
                       class="mr-2 animate-spin" />

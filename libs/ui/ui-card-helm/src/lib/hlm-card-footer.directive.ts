@@ -1,5 +1,5 @@
 import { computed, Directive, input } from '@angular/core';
-import { hlm } from '@spartan-ng/ui-core';
+import { hlm } from '@spartan-ng/brain/core';
 import { cva, VariantProps } from 'class-variance-authority';
 import { ClassValue } from 'clsx';
 
@@ -24,6 +24,7 @@ export type CardFooterVariants = VariantProps<typeof cardFooterVariants>;
   },
 })
 export class HlmCardFooterDirective {
+  // eslint-disable-next-line @angular-eslint/no-input-rename
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
   protected _computedClass = computed(() =>
     hlm(cardFooterVariants({ direction: this.direction() }), this.userClass()),

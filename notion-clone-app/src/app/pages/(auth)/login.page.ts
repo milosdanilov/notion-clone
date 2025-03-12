@@ -1,3 +1,4 @@
+import { NgIcon } from '@ng-icons/core';
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { FormAction } from '@analogjs/router';
@@ -8,7 +9,7 @@ import { lucideLoaderCircle } from '@ng-icons/lucide';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 import { HlmFormFieldModule } from '@spartan-ng/ui-formfield-helm';
 import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
-import { HlmIconComponent } from '@spartan-ng/ui-icon-helm';
+import { HlmIconDirective } from '@spartan-ng/ui-icon-helm';
 
 import { DisableCtrlDirective } from '@notion-clone/ui-utils';
 
@@ -24,7 +25,8 @@ import { type LoginSubmitErrors } from './login.server';
     HlmFormFieldModule,
     HlmInputDirective,
     HlmButtonDirective,
-    HlmIconComponent,
+    NgIcon,
+    HlmIconDirective,
     FormAction,
     ReactiveFormsModule,
     DisableCtrlDirective,
@@ -87,7 +89,8 @@ import { type LoginSubmitErrors } from './login.server';
         @if (!isLoading()) {
           <span>Login</span>
         } @else {
-          <hlm-icon
+          <ng-icon
+            hlm
             name="lucideLoaderCircle"
             size="sm"
             class="mr-2 animate-spin" />

@@ -1,5 +1,5 @@
 import { computed, Directive, input, Input, signal } from '@angular/core';
-import { hlm } from '@spartan-ng/ui-core';
+import { hlm } from '@spartan-ng/brain/core';
 import { cva, VariantProps } from 'class-variance-authority';
 import { ClassValue } from 'clsx';
 
@@ -46,6 +46,7 @@ export type ButtonVariants = VariantProps<typeof buttonVariants>;
   },
 })
 export class HlmButtonDirective {
+  // eslint-disable-next-line @angular-eslint/no-input-rename
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
   private readonly _settableClass = signal<ClassValue>('');
 

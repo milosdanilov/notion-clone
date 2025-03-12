@@ -4,7 +4,7 @@ import {
   hexColorFor,
   isBright,
 } from '@spartan-ng/brain/avatar';
-import { hlm } from '@spartan-ng/ui-core';
+import { hlm } from '@spartan-ng/brain/core';
 
 @Directive({
   selector: '[hlmAvatarFallback]',

@@ -3,7 +3,7 @@ const { join } = require('path');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  presets: [require('@spartan-ng/ui-core/hlm-tailwind-preset')],
+  presets: [require('@spartan-ng/brain/hlm-tailwind-preset')],
   content: [
     join(__dirname, 'notion-clone-app/src/**/!(*.stories|*.spec).{ts,html}'),
     ...createGlobPatternsForDependencies(join(__dirname, 'notion-clone-app')),

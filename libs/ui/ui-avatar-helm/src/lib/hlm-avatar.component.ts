@@ -6,7 +6,7 @@ import {
   input,
 } from '@angular/core';
 import { BrnAvatarComponent } from '@spartan-ng/brain/avatar';
-import { hlm } from '@spartan-ng/ui-core';
+import { hlm } from '@spartan-ng/brain/core';
 import { type VariantProps, cva } from 'class-variance-authority';
 import type { ClassValue } from 'clsx';
 
@@ -45,6 +45,7 @@ export type AvatarVariants = VariantProps<typeof avatarVariants>;
   `,
 })
 export class HlmAvatarComponent extends BrnAvatarComponent {
+  // eslint-disable-next-line @angular-eslint/no-input-rename
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
   public readonly variant = input<AvatarVariants['variant']>('medium');
 
