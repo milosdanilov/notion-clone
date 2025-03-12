@@ -2,8 +2,10 @@
   "name": "@spartan-ng/ui-label-helm",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^19.1.0",
-    "@angular/core": "^19.1.0"
+    "@angular/core": "^19.1.0",
+    "@spartan-ng/brain": "0.0.1-alpha.420",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1"
   },
   "sideEffects": false
 }
