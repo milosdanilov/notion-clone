@@ -1,5 +1,3 @@
-import { provideIcons } from '@ng-icons/core';
-import { NgIcon } from '@ng-icons/core';
 import { NgComponentOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -9,14 +7,15 @@ import {
   inject,
   input,
 } from '@angular/core';
+import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideX } from '@ng-icons/lucide';
-import { HlmIconDirective } from '@spartan-ng/ui-icon-helm';
+import { hlm } from '@spartan-ng/brain/core';
 import {
   BrnDialogCloseDirective,
   BrnDialogRef,
   injectBrnDialogContext,
 } from '@spartan-ng/brain/dialog';
-import { hlm } from '@spartan-ng/brain/core';
+import { HlmIconDirective } from '@spartan-ng/ui-icon-helm';
 import type { ClassValue } from 'clsx';
 import { HlmDialogCloseDirective } from './hlm-dialog-close.directive';
 
@@ -44,7 +43,7 @@ import { HlmDialogCloseDirective } from './hlm-dialog-close.directive';
 
     <button brnDialogClose hlm>
       <span class="sr-only">Close</span>
-      <ng-icon hlm class="flex h-4 w-4" size="none" name="lucideX" />
+      <ng-icon hlm size="sm" name="lucideX" />
     </button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

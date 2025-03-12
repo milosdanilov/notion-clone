@@ -57,8 +57,8 @@ importers:
         specifier: ^29.10.0
         version: 29.10.0
       '@spartan-ng/brain':
-        specifier: ^0.0.1-alpha.392
-        version: 0.0.1-alpha.392(d2077a719b3e63afacfe3f81cc489e69)
+        specifier: 0.0.1-alpha.420
+        version: 0.0.1-alpha.420(d2077a719b3e63afacfe3f81cc489e69)
       '@spartan-ng/ui-avatar-brain':
         specifier: ^0.0.1-alpha.374
         version: 0.0.1-alpha.374(@angular/cdk@19.1.5(@angular/common@19.1.8(@angular/core@19.1.8(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.1.8(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.1.8(rxjs@7.8.1)(zone.js@0.15.0))(clsx@2.1.1)
@@ -3265,16 +3265,13 @@ packages:
   '@sinonjs/fake-timers@10.3.0':
     resolution: {integrity: sha512-V4BG07kuYSUkTCSBHG8G8TNhM+F19jXFWnQtzj+we8DrkpSBCee9Z3Ms8yiGer/dlmhe35/Xdgyo3/0rQKg7YA==}
 
-  '@spartan-ng/brain@0.0.1-alpha.392':
-    resolution: {integrity: sha512-Mpv/8mx72OHe2RQLUHoN5cl8c0KRg/jgQOpsgZ9lg1ADmlbNzN8xr7cwdjCCV6sSWqmVqlKeG0G4QMVQI7XZOQ==}
+  '@spartan-ng/brain@0.0.1-alpha.420':
+    resolution: {integrity: sha512-n0ROR3621LPYTt0GbjthBSTqi7MLaHCSZeku3b00eNLgg6pRru1MuJs40eUdpMJpaXBaX09eneZSSp6AppSoIQ==}
     peerDependencies:
       '@angular/cdk': '>=18.0.0'
       '@angular/common': '>=18.0.0'
       '@angular/core': '>=18.0.0'
       '@angular/forms': '>=18.0.0'
-      '@ngneat/overview': ^5.1.1
-      '@ngneat/until-destroy': ^10.0.0
-      '@ngxpert/cmdk': ^1.0.0
       clsx: '>=2.0.0'
       luxon: '>=3.0.0'
       rxjs: '>=6.6.0'
@@ -3282,12 +3279,6 @@ packages:
       tailwindcss: '>=3.3.0'
       tailwindcss-animate: '>=1.0.7'
     peerDependenciesMeta:
-      '@ngneat/overview':
-        optional: true
-      '@ngneat/until-destroy':
-        optional: true
-      '@ngxpert/cmdk':
-        optional: true
       luxon:
         optional: true
 
@@ -12938,7 +12929,7 @@ snapshots:
     dependencies:
       '@sinonjs/commons': 3.0.1
 
-  '@spartan-ng/brain@0.0.1-alpha.392(d2077a719b3e63afacfe3f81cc489e69)':
+  '@spartan-ng/brain@0.0.1-alpha.420(d2077a719b3e63afacfe3f81cc489e69)':
     dependencies:
       '@angular/cdk': 19.1.5(@angular/common@19.1.8(@angular/core@19.1.8(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.1.8(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
       '@angular/common': 19.1.8(@angular/core@19.1.8(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
