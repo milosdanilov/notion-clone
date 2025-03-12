@@ -2,12 +2,8 @@
   "name": "@spartan-ng/ui-icon-helm",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "19.1.8",
-    "@angular/core": "19.1.8",
-    "@ng-icons/core": "^29.10.0",
-    "@spartan-ng/ui-core": "^0.0.1-alpha.374",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.1"
+    "@angular/common": "^19.1.0",
+    "@angular/core": "^19.1.0"
   },
   "sideEffects": false
 }

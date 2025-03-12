@@ -5,11 +5,11 @@ import { FormAction } from '@analogjs/router';
 
 import { provideIcons } from '@ng-icons/core';
 import { lucideLoaderCircle } from '@ng-icons/lucide';
+import { HlmIconDirective } from '@spartan-ng/ui-icon-helm';
 
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 import { HlmFormFieldModule } from '@spartan-ng/ui-formfield-helm';
 import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
-import { HlmIconDirective } from '@spartan-ng/ui-icon-helm';
 
 import { DisableCtrlDirective } from '@notion-clone/ui-utils';
 

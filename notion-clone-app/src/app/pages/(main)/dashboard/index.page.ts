@@ -16,7 +16,6 @@ import {
 } from '@spartan-ng/ui-card-helm';
 
 import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
-import { HlmIconDirective } from '@spartan-ng/ui-icon-helm';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 
 import {
@@ -29,6 +28,7 @@ import { HlmToasterService } from '@spartan-ng/ui-sonner-helm';
 
 import { provideIcons } from '@ng-icons/core';
 import { lucideLoaderCircle } from '@ng-icons/lucide';
+import { HlmIconDirective } from '@spartan-ng/ui-icon-helm';
 
 import { EmojiPickerComponent } from '@notion-clone/emoji-picker';
 import { DisableCtrlDirective } from '@notion-clone/ui-utils';
