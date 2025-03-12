@@ -18,7 +18,6 @@ export type AlertDescriptionVariants = VariantProps<
   },
 })
 export class HlmAlertDescriptionDirective {
-  // eslint-disable-next-line @angular-eslint/no-input-rename
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
   protected readonly _computedClass = computed(() =>
     hlm(alertDescriptionVariants(), this.userClass()),

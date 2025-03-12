@@ -24,7 +24,6 @@ export type CardFooterVariants = VariantProps<typeof cardFooterVariants>;
   },
 })
 export class HlmCardFooterDirective {
-  // eslint-disable-next-line @angular-eslint/no-input-rename
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
   protected _computedClass = computed(() =>
     hlm(cardFooterVariants({ direction: this.direction() }), this.userClass()),

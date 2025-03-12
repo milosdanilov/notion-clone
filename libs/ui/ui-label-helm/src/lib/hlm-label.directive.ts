@@ -45,7 +45,6 @@ export type LabelVariants = VariantProps<typeof labelVariants>;
 export class HlmLabelDirective {
   private readonly _brn = inject(BrnLabelDirective, { host: true });
 
-  // eslint-disable-next-line @angular-eslint/no-input-rename
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
 
   public readonly variant = input<LabelVariants['variant']>('default');

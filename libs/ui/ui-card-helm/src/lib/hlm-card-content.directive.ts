@@ -17,7 +17,6 @@ export type CardContentVariants = VariantProps<typeof cardContentVariants>;
   },
 })
 export class HlmCardContentDirective {
-  // eslint-disable-next-line @angular-eslint/no-input-rename
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
   protected _computedClass = computed(() =>
     hlm(cardContentVariants(), this.userClass()),

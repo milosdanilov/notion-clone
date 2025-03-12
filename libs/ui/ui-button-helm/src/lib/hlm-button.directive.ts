@@ -46,7 +46,6 @@ export type ButtonVariants = VariantProps<typeof buttonVariants>;
   },
 })
 export class HlmButtonDirective {
-  // eslint-disable-next-line @angular-eslint/no-input-rename
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
   private readonly _settableClass = signal<ClassValue>('');
 
