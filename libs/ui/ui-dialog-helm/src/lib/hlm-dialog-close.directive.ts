@@ -10,7 +10,6 @@ import type { ClassValue } from 'clsx';
   },
 })
 export class HlmDialogCloseDirective {
-  // eslint-disable-next-line @angular-eslint/no-input-rename
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
 
   protected readonly _computedClass = computed(() =>

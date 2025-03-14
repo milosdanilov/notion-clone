@@ -12,7 +12,6 @@ import type { ClassValue } from 'clsx';
   hostDirectives: [BrnDialogTitleDirective],
 })
 export class HlmDialogTitleDirective {
-  // eslint-disable-next-line @angular-eslint/no-input-rename
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
   protected _computedClass = computed(() =>
     hlm('text-lg font-semibold leading-none tracking-tight', this.userClass()),
