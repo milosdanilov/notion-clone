@@ -39,6 +39,9 @@
       "@spartan-ng/ui-input-helm": ["libs/ui/ui-input-helm/src/index.ts"],
       "@spartan-ng/ui-label-helm": ["libs/ui/ui-label-helm/src/index.ts"],
       "@spartan-ng/ui-popover-helm": ["libs/ui/ui-popover-helm/src/index.ts"],
+      "@spartan-ng/ui-scrollarea-helm": [
+        "libs/ui/ui-scrollarea-helm/src/index.ts"
+      ],
       "@spartan-ng/ui-select-helm": ["libs/ui/ui-select-helm/src/index.ts"],
       "@spartan-ng/ui-sheet-helm": ["libs/ui/ui-sheet-helm/src/index.ts"],
       "@spartan-ng/ui-sonner-helm": ["libs/ui/ui-sonner-helm/src/index.ts"]
