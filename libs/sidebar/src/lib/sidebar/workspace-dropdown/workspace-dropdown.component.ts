@@ -1,9 +1,10 @@
 import { Component, effect, input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { AuthUser } from '@supabase/supabase-js';
+
 import { Workspace } from '@notion-clone/workspace/server';
 
-import { SelectedWorkspaceComponent } from '../selected-workspace/selected-workspace.component';
 import {
   HlmDialogComponent,
   HlmDialogContentComponent,
@@ -11,11 +12,14 @@ import {
   HlmDialogHeaderComponent,
   HlmDialogTitleDirective,
 } from '@spartan-ng/ui-dialog-helm';
+
 import {
   BrnDialogContentDirective,
   BrnDialogTriggerDirective,
 } from '@spartan-ng/brain/dialog';
-import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
+
+import { SelectedWorkspaceComponent } from '../selected-workspace/selected-workspace.component';
+import { WorkspaceCreatorComponent } from '../workspace-creator/workspace-creator.component';
 
 @Component({
   selector: 'lib-workspace-dropdown',
@@ -24,12 +28,12 @@ import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
     SelectedWorkspaceComponent,
     HlmDialogComponent,
     BrnDialogTriggerDirective,
-    HlmButtonDirective,
     HlmDialogContentComponent,
     BrnDialogContentDirective,
     HlmDialogHeaderComponent,
     HlmDialogTitleDirective,
     HlmDialogDescriptionDirective,
+    WorkspaceCreatorComponent,
   ],
   template: `
     <div class="relative inline-block text-left">
@@ -80,7 +84,17 @@ import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
               }
             </div>
             <hlm-dialog>
-              <button brnDialogTrigger hlmBtn>Button</button>
+              <button
+                brnDialogTrigger
+                class="flex transition-all hover:bg-muted justify-center
+              items-center gap-2 p-2 w-full">
+                <article
+                  class="text-slate-500 rounded-full bg-slate-800 
+                    w-4 h-4 flex items-center justify-center">
+                  +
+                </article>
+                Create workspace
+              </button>
               <hlm-dialog-content
                 *brnDialogContent="let ctx"
                 class="h-screen block sm:h-[440px] overflow-scroll w-full">
@@ -91,7 +105,9 @@ import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
                     You can change your workspace privacy settings after
                     creating the workspace too.</p
                   >
-                  <div>WorkspaceCreator</div>
+                  <div>
+                    <lib-workspace-creator [user]="user()" />
+                  </div>
                 </hlm-dialog-header>
               </hlm-dialog-content>
             </hlm-dialog>
@@ -116,6 +132,8 @@ export class WorkspaceDropdownComponent {
   sharedWorkspaces = input.required<Workspace[]>();
   collaboratingWorkspaces = input.required<Workspace[]>();
   defaultWorkspace = input<Workspace>();
+  // TODO: maybe the user input is redundant
+  user = input<AuthUser>();
 
   // TODO: dispatch SET_WORKSPACES event to global state
 

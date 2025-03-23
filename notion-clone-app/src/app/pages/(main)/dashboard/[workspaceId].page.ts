@@ -2,6 +2,7 @@ import { LoadResult } from '@analogjs/router';
 import { Component, computed, input } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { SidebarComponent } from '@notion-clone/sidebar';
 
 import { load } from './[workspaceId].server';
@@ -15,7 +16,8 @@ import { load } from './[workspaceId].server';
         [privateWorkspaces]="privateWorkspaces()"
         [collaboratingWorkspaces]="collaboratingWorkspaces()"
         [sharedWorkspaces]="sharedWorkspaces()"
-        [defaultWorkspace]="defaultWorkspace()" />
+        [defaultWorkspace]="defaultWorkspace()"
+        [user]="user()" />
 
       <div
         class="dark:border-Neutrals/neutrals-12/70 
@@ -45,4 +47,6 @@ export default class WorkspacePageLayoutComponent {
       ...this.sharedWorkspaces(),
     ].find((workspace) => workspace.id === this.load()?.workspaceId),
   );
+
+  readonly user = computed(() => this.load()?.user);
 }

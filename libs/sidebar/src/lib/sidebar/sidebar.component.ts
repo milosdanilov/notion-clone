@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ClassValue, clsx } from 'clsx';
 import { WorkspaceDropdownComponent } from './workspace-dropdown/workspace-dropdown.component';
 import { Workspace } from '@notion-clone/workspace/server';
+import { AuthUser } from '@supabase/supabase-js';
 
 @Component({
   selector: 'lib-sidebar',
@@ -15,7 +16,8 @@ import { Workspace } from '@notion-clone/workspace/server';
           [privateWorkspaces]="privateWorkspaces()"
           [sharedWorkspaces]="sharedWorkspaces()"
           [collaboratingWorkspaces]="collaboratingWorkspaces()"
-          [defaultWorkspace]="defaultWorkspace()" />
+          [defaultWorkspace]="defaultWorkspace()"
+          [user]="user()" />
       </div>
     </aside>
   `,
@@ -41,4 +43,5 @@ export class SidebarComponent {
   sharedWorkspaces = input.required<Workspace[]>();
   collaboratingWorkspaces = input.required<Workspace[]>();
   defaultWorkspace = input<Workspace>();
+  user = input<AuthUser>();
 }

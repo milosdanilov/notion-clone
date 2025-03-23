@@ -49,6 +49,7 @@ export const load = async ({ event, params }: PageServerLoad) => {
     collaboratingWorkspaces,
     sharedWorkspaces,
     workspaceId: params['workspaceId'],
+    user: user,
   };
 };
 
