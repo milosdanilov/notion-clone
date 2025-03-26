@@ -2,12 +2,10 @@ import { z } from 'zod';
 
 import { addCollaborators } from '@notion-clone/supabase';
 
-import {
-  createWorkspaceModel,
-  WorkspaceRepository,
-} from '@notion-clone/workspace/server';
+import { authProcedure, router } from '@notion-clone/core/trpc';
 
-import { protectedProcedure, router } from '../trpc';
+import { createWorkspaceModel } from '../../models/workspace.model';
+import { WorkspaceRepository } from '../../repository/workspace.repository';
 
 const createWorkspace = async (title: string, userId: string) => {
   const model = createWorkspaceModel({
@@ -25,7 +23,7 @@ const createWorkspace = async (title: string, userId: string) => {
 
 // TODO: use output validation
 export const workspacesRouter = router({
-  createPrivate: protectedProcedure
+  createPrivate: authProcedure
     .input(
       z.object({
         title: z.string(),
@@ -35,7 +33,7 @@ export const workspacesRouter = router({
       const { input, ctx } = opts;
       return createWorkspace(input.title, ctx.user.id);
     }),
-  createShared: protectedProcedure
+  createShared: authProcedure
     // TODO: use drizzle zod schema for collaborators
     .input(z.object({ title: z.string(), collaborators: z.any() }))
     .mutation(async (opts) => {
@@ -44,3 +42,5 @@ export const workspacesRouter = router({
       await addCollaborators(input.collaborators, workspace.id);
     }),
 });
+
+export type WorkspacesRouter = typeof workspacesRouter;

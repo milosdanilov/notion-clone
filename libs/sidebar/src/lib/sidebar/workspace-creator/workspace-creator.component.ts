@@ -23,8 +23,7 @@ import {
   HlmAvatarImageDirective,
 } from '@spartan-ng/ui-avatar-helm';
 
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import { injectTrpcClient } from '../../../../../../notion-clone-app/src/trpc-client';
+import { injectTrpcClient } from '@notion-clone/api/client';
 import { firstValueFrom } from 'rxjs';
 
 interface PermissionOption {

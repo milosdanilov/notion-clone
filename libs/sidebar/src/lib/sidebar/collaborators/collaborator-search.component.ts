@@ -33,9 +33,7 @@ import {
   HlmAvatarImageDirective,
 } from '@spartan-ng/ui-avatar-helm';
 
-// TODO: move trpc client to library, try to split trpc to multiple domain clients
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import { injectTrpcClient } from '../../../../../../notion-clone-app/src/trpc-client';
+import { injectTrpcClient } from '@notion-clone/api/client';
 
 @Component({
   selector: 'lib-collaborator-search',

@@ -1,4 +1,5 @@
-import { AppRouter } from './server/trpc/routers';
+import { AppRouter } from '@notion-clone/api/server';
+
 import { createTrpcClient } from '@analogjs/trpc';
 import { inject } from '@angular/core';
 
