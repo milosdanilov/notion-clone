@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "api-client",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/api/client/src",
   "prefix": "lib",
