@@ -482,8 +482,6 @@ export type CompositeTypes<
     ? PublicSchema['CompositeTypes'][PublicCompositeTypeNameOrOptions]
     : never;
 
-// TODO: move this to its own domain
-export type User = InferSelectModel<typeof users>;
 // export type Folder = InferSelectModel<typeof folders>;
 // export type File = InferSelectModel<typeof files>;
 // export type Product = InferSelectModel<typeof products>;

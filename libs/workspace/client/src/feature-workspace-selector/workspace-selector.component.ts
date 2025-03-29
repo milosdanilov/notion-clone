@@ -132,7 +132,6 @@ export class WorkspaceSelectorComponent {
   sharedWorkspaces = input.required<Workspace[]>();
   collaboratingWorkspaces = input.required<Workspace[]>();
   defaultWorkspace = input<Workspace>();
-  // TODO: maybe the user input is redundant
   user = input<AuthUser>();
 
   // TODO: dispatch SET_WORKSPACES event to global state

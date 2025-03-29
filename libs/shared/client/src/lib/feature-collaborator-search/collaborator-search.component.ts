@@ -8,7 +8,7 @@ import { debounceTime, Subject, switchMap } from 'rxjs';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideSearch } from '@ng-icons/lucide';
 
-import { User } from '@notion-clone/supabase';
+import { User } from '@notion-clone/user/server';
 
 import {
   BrnSheetContentDirective,

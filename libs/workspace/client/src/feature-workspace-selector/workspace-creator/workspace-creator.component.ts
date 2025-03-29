@@ -21,7 +21,7 @@ import {
   HlmAvatarImageDirective,
 } from '@spartan-ng/ui-avatar-helm';
 
-import { User } from '@notion-clone/supabase';
+import { User } from '@notion-clone/user/server';
 import { injectTrpcClient } from '@notion-clone/api/client';
 import { CollaboratorSearchComponent } from '@notion-clone/shared/client';
 
@@ -236,6 +236,7 @@ export class WorkspaceCreatorComponent {
     }
 
     this.isLoading.set(false);
+    window.location.reload();
   }
 
   addCollaborator(user: User) {

@@ -1,13 +1,13 @@
 import { z } from 'zod';
 
-import { searchUsers } from '@notion-clone/supabase';
-
 import { authProcedure, router } from '@notion-clone/core/trpc';
+
+import { UserRepository } from '../../repository/user.repository';
 
 export const usersRouter = router({
   search: authProcedure.input(z.string()).query(async (opts) => {
     const { input } = opts;
-    return searchUsers(input);
+    return UserRepository.searchUsers(input);
   }),
 });
 
