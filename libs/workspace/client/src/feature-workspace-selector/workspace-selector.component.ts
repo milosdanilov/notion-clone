@@ -18,14 +18,13 @@ import {
   BrnDialogTriggerDirective,
 } from '@spartan-ng/brain/dialog';
 
-import { SelectedWorkspaceComponent } from '../selected-workspace/selected-workspace.component';
-import { WorkspaceCreatorComponent } from '../workspace-creator/workspace-creator.component';
+import { WorkspaceItemComponent } from './workspace-item/workspace-item.component';
+import { WorkspaceCreatorComponent } from './workspace-creator/workspace-creator.component';
 
 @Component({
-  selector: 'lib-workspace-dropdown',
+  selector: 'lib-workspace-selector',
   imports: [
     CommonModule,
-    SelectedWorkspaceComponent,
     HlmDialogComponent,
     BrnDialogTriggerDirective,
     HlmDialogContentComponent,
@@ -34,13 +33,14 @@ import { WorkspaceCreatorComponent } from '../workspace-creator/workspace-creato
     HlmDialogTitleDirective,
     HlmDialogDescriptionDirective,
     WorkspaceCreatorComponent,
+    WorkspaceItemComponent,
   ],
   template: `
     <div class="relative inline-block text-left">
       <div>
         <span (click)="toggleDropdown()">
           @if (selectedOption(); as option) {
-            <lib-selected-workspace [workspace]="option" />
+            <lib-workspace-item [workspace]="option" />
           } @else {
             <span>Select a workspace</span>
           }
@@ -120,14 +120,14 @@ import { WorkspaceCreatorComponent } from '../workspace-creator/workspace-creato
       <p class="text-muted-foreground">{{ type }}</p>
       <hr />
       @for (option of workspaces; track $index) {
-        <lib-selected-workspace
+        <lib-workspace-item
           [workspace]="option"
           (workspaceClicked)="handleSelect($event)" />
       }
     </ng-template>
   `,
 })
-export class WorkspaceDropdownComponent {
+export class WorkspaceSelectorComponent {
   privateWorkspaces = input.required<Workspace[]>();
   sharedWorkspaces = input.required<Workspace[]>();
   collaboratingWorkspaces = input.required<Workspace[]>();

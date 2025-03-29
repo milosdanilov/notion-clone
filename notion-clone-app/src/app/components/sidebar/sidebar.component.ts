@@ -1,18 +1,19 @@
 import { Component, computed, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ClassValue, clsx } from 'clsx';
-import { WorkspaceDropdownComponent } from './workspace-dropdown/workspace-dropdown.component';
-import { Workspace } from '@notion-clone/workspace/server';
 import { AuthUser } from '@supabase/supabase-js';
+import { ClassValue, clsx } from 'clsx';
+
+import { WorkspaceSelectorComponent } from '@notion-clone/workspace/client';
+import { Workspace } from '@notion-clone/workspace/server';
 
 @Component({
-  selector: 'lib-sidebar',
-  imports: [CommonModule, WorkspaceDropdownComponent],
+  selector: 'nc-sidebar',
+  imports: [CommonModule, WorkspaceSelectorComponent],
   template: `
     <aside [class]="asideStyles()">
       <div>
-        <lib-workspace-dropdown
+        <lib-workspace-selector
           [privateWorkspaces]="privateWorkspaces()"
           [sharedWorkspaces]="sharedWorkspaces()"
           [collaboratingWorkspaces]="collaboratingWorkspaces()"

@@ -2,8 +2,7 @@ import { LoadResult } from '@analogjs/router';
 import { Component, computed, input } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import { SidebarComponent } from '@notion-clone/sidebar';
+import { SidebarComponent } from '@/components';
 
 import { load } from './[workspaceId].server';
 
@@ -12,7 +11,7 @@ import { load } from './[workspaceId].server';
   imports: [RouterOutlet, SidebarComponent],
   template: `
     <main class="flex overflow-hidden h-screen w-screen">
-      <lib-sidebar
+      <nc-sidebar
         [privateWorkspaces]="privateWorkspaces()"
         [collaboratingWorkspaces]="collaboratingWorkspaces()"
         [sharedWorkspaces]="sharedWorkspaces()"

@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 import { Workspace } from '@notion-clone/workspace/server';
 
 @Component({
-  selector: 'lib-selected-workspace',
+  selector: 'lib-workspace-item',
   imports: [CommonModule, RouterLink],
   template: `
     <a
@@ -29,7 +29,7 @@ import { Workspace } from '@notion-clone/workspace/server';
     </a>
   `,
 })
-export class SelectedWorkspaceComponent {
+export class WorkspaceItemComponent {
   workspace = input.required<Workspace>();
   workspaceClicked = output<Workspace>();
 

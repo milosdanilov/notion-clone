@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { WorkspaceDropdownComponent } from './workspace-dropdown.component';
+import { WorkspaceSelectorComponent } from './workspace-selector.component';
 
 describe('WorkspaceDropdownComponent', () => {
-  let component: WorkspaceDropdownComponent;
-  let fixture: ComponentFixture<WorkspaceDropdownComponent>;
+  let component: WorkspaceSelectorComponent;
+  let fixture: ComponentFixture<WorkspaceSelectorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WorkspaceDropdownComponent],
+      imports: [WorkspaceSelectorComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(WorkspaceDropdownComponent);
+    fixture = TestBed.createComponent(WorkspaceSelectorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

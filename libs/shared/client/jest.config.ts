@@ -1,8 +1,8 @@
 export default {
-  displayName: 'sidebar',
-  preset: '../../jest.preset.js',
+  displayName: 'shared-client',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/libs/sidebar',
+  coverageDirectory: '../../../coverage/libs/shared/client',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

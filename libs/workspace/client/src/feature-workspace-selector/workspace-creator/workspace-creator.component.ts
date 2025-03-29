@@ -1,8 +1,11 @@
 import { Component, computed, input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { firstValueFrom } from 'rxjs';
 import { AuthUser } from '@supabase/supabase-js';
-import { User } from '@notion-clone/supabase';
+
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { lucideLock, lucidePlus, lucideShare } from '@ng-icons/lucide';
 
 import { HlmLabelDirective } from '@spartan-ng/ui-label-helm';
 import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
@@ -10,12 +13,7 @@ import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
 import { BrnSelectImports } from '@spartan-ng/brain/select';
 import { HlmSelectImports } from '@spartan-ng/ui-select-helm';
 
-import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideLock, lucidePlus, lucideShare } from '@ng-icons/lucide';
-
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
-
-import { CollaboratorSearchComponent } from '../collaborators/collaborator-search.component';
 import { HlmScrollAreaDirective } from '@spartan-ng/ui-scrollarea-helm';
 import {
   HlmAvatarComponent,
@@ -23,8 +21,9 @@ import {
   HlmAvatarImageDirective,
 } from '@spartan-ng/ui-avatar-helm';
 
+import { User } from '@notion-clone/supabase';
 import { injectTrpcClient } from '@notion-clone/api/client';
-import { firstValueFrom } from 'rxjs';
+import { CollaboratorSearchComponent } from '@notion-clone/shared/client';
 
 interface PermissionOption {
   label: string;
