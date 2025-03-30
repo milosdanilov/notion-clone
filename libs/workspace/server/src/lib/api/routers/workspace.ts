@@ -4,42 +4,63 @@ import { addCollaborators } from '@notion-clone/supabase';
 
 import { authProcedure, router } from '@notion-clone/core/trpc';
 
-import { createWorkspaceModel } from '../../models/workspace.model';
 import { WorkspaceRepository } from '../../repository/workspace.repository';
 
-const createWorkspace = async (title: string, userId: string) => {
-  const model = createWorkspaceModel({
-    title: title,
-    workspaceOwner: userId,
-    iconId: '💼',
-  });
+import {
+  Workspace,
+  WorkspaceInsert,
+  WorkspaceInsertSchema,
+  WorkspaceSelectSchema,
+} from '../../models/workspace.schema';
+
+import { createWorkspaceModel } from '../../models/workspace.model';
+
+const createWorkspace = async (
+  payload: WorkspaceInsert,
+): Promise<Workspace> => {
+  const model = createWorkspaceModel(payload);
 
   const [workspace] = await WorkspaceRepository.create(model);
 
   return {
-    workspace,
+    ...workspace,
   };
 };
 
-// TODO: use output validation
+const CreatePrivateInputSchema = WorkspaceInsertSchema.partial({
+  workspaceOwner: true,
+});
+
+const CreateSharedInputSchema = WorkspaceInsertSchema.partial({
+  workspaceOwner: true,
+}).merge(
+  z.object({
+    collaborators: z.array(z.object({ id: z.string() })),
+  }),
+);
+
 export const workspacesRouter = router({
   createPrivate: authProcedure
-    .input(
-      z.object({
-        title: z.string(),
-      }),
-    )
+    .input(CreatePrivateInputSchema)
+    .output(WorkspaceSelectSchema)
     .mutation(async (opts) => {
       const { input, ctx } = opts;
-      return createWorkspace(input.title, ctx.user.id);
+      return createWorkspace({
+        title: input.title,
+        workspaceOwner: ctx.user.id,
+      });
     }),
   createShared: authProcedure
-    // TODO: use drizzle zod schema for collaborators
-    .input(z.object({ title: z.string(), collaborators: z.any() }))
+    .input(CreateSharedInputSchema)
+    .output(WorkspaceSelectSchema)
     .mutation(async (opts) => {
       const { input, ctx } = opts;
-      const { workspace } = await createWorkspace(input.title, ctx.user.id);
+      const workspace = await createWorkspace({
+        title: input.title,
+        workspaceOwner: ctx.user.id,
+      });
       await addCollaborators(input.collaborators, workspace.id);
+      return workspace;
     }),
 });
 

@@ -1,26 +1,22 @@
-import { InferSelectModel } from 'drizzle-orm';
-
 import { v4 } from 'uuid';
 
-import { workspaces } from '@notion-clone/supabase/schema';
+import { Workspace, WorkspaceInsert } from './workspace.schema';
 
-export type Workspace = InferSelectModel<typeof workspaces>;
-
-export function createWorkspaceModel(data: {
-  title: string;
-  workspaceOwner: string;
-  iconId: string;
-  logo?: string;
-}): Workspace {
+export function createWorkspaceModel({
+  iconId,
+  title,
+  workspaceOwner,
+  logo,
+}: WorkspaceInsert): Workspace {
   return {
     data: null,
     createdAt: new Date().toISOString(),
-    iconId: data.iconId,
+    iconId: iconId || '💼',
     id: v4(),
     inTrash: '',
-    title: data.title,
-    workspaceOwner: data.workspaceOwner,
-    logo: data.logo || null,
+    title: title,
+    workspaceOwner: workspaceOwner,
+    logo: logo || null,
     bannerUrl: '',
   };
 }

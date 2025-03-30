@@ -6,8 +6,9 @@ import {
   workspaces,
 } from '@notion-clone/supabase/schema';
 
-import { Workspace } from '../models/workspace.model';
 import { and, eq, notExists } from 'drizzle-orm';
+
+import { Workspace } from '../models/workspace.schema';
 
 export class WorkspaceRepository {
   static getByUserId(userId: string): Promise<Workspace | undefined> {

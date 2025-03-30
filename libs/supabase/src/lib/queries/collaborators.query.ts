@@ -4,7 +4,12 @@ import { User } from '../types/db.types';
 import { db } from '../db';
 import { collaborators } from '../schema';
 
-export const addCollaborators = async (users: User[], workspaceId: string) => {
+export type UserInput = Pick<User, 'id'>;
+
+export const addCollaborators = async (
+  users: UserInput[],
+  workspaceId: string,
+) => {
   users.forEach(async (user: User) => {
     const exists = await db.query.collaborators.findFirst({
       where: (u, { eq }) =>
