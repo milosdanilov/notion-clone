@@ -25,6 +25,7 @@
       "@notion-clone/core": ["libs/core/src/index.ts"],
       "@notion-clone/core/trpc": ["libs/core/src/lib/trpc/src/index.ts"],
       "@notion-clone/emoji-picker": ["libs/ui/emoji-picker/src/index.ts"],
+      "@notion-clone/folder/server": ["libs/folder/server/src/index.ts"],
       "@notion-clone/shared/client": ["libs/shared/client/src/index.ts"],
       "@notion-clone/sidebar": ["libs/sidebar/src/index.ts"],
       "@notion-clone/supabase": ["libs/supabase/src/index.ts"],
