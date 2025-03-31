@@ -1,6 +1,8 @@
 import { LoadResult } from '@analogjs/router';
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, effect, inject, input } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
+import { WorkspaceStore } from '@notion-clone/workspace/client';
 
 import { SidebarComponent } from '@/components';
 
@@ -11,12 +13,7 @@ import { load } from './[workspaceId].server';
   imports: [RouterOutlet, SidebarComponent],
   template: `
     <main class="flex overflow-hidden h-screen w-screen">
-      <nc-sidebar
-        [privateWorkspaces]="privateWorkspaces()"
-        [collaboratingWorkspaces]="collaboratingWorkspaces()"
-        [sharedWorkspaces]="sharedWorkspaces()"
-        [defaultWorkspace]="defaultWorkspace()"
-        [user]="user()" />
+      <nc-sidebar [user]="user()" />
 
       <div
         class="dark:border-Neutrals/neutrals-12/70 
@@ -29,23 +26,20 @@ import { load } from './[workspaceId].server';
 export default class WorkspacePageLayoutComponent {
   load = input.required<LoadResult<typeof load>>();
 
-  readonly privateWorkspaces = computed(
-    () => this.load()?.privateWorkspaces || [],
-  );
-  readonly collaboratingWorkspaces = computed(
-    () => this.load()?.collaboratingWorkspaces || [],
-  );
-  readonly sharedWorkspaces = computed(
-    () => this.load()?.sharedWorkspaces || [],
-  );
+  private workspaceStore = inject(WorkspaceStore);
 
-  readonly defaultWorkspace = computed(() =>
-    [
-      ...this.privateWorkspaces(),
-      ...this.collaboratingWorkspaces(),
-      ...this.sharedWorkspaces(),
-    ].find((workspace) => workspace.id === this.load()?.workspaceId),
-  );
+  constructor() {
+    effect(() => {
+      const loaded = this.load();
+
+      this.workspaceStore.initialize({
+        privateWorkspaces: loaded?.privateWorkspaces || [],
+        sharedWorkspaces: loaded?.sharedWorkspaces || [],
+        collaboratingWorkspaces: loaded?.collaboratingWorkspaces || [],
+        selectedWorkspaceId: loaded?.workspaceId || null,
+      });
+    });
+  }
 
   readonly user = computed(() => this.load()?.user);
 }

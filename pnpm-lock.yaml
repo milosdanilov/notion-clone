@@ -56,6 +56,9 @@ importers:
       '@ng-icons/lucide':
         specifier: ^29.10.0
         version: 29.10.0
+      '@ngrx/signals':
+        specifier: ^19.0.1
+        version: 19.0.1(@angular/core@19.1.8(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
       '@spartan-ng/brain':
         specifier: 0.0.1-alpha.420
         version: 0.0.1-alpha.420(d2077a719b3e63afacfe3f81cc489e69)
@@ -2692,6 +2695,15 @@ packages:
 
   '@ng-icons/lucide@29.10.0':
     resolution: {integrity: sha512-yFPcY9DPuOGIZOovB0gqCXSBeYsh/tbrjbcJTGyfgJFnFbNU3vgqNL52ZRiF6hSVX/L6pl6/rZmz0NYeLe4mPQ==}
+
+  '@ngrx/signals@19.0.1':
+    resolution: {integrity: sha512-e9cGgF//tIyN1PKDDcBQkI0csxRcw4r9ezTtDzQpM2gPU5frD9JxaW/YU5gM02ZMl97bUMoI82fBtnDN0RtyWg==}
+    peerDependencies:
+      '@angular/core': ^19.0.0
+      rxjs: ^6.5.3 || ^7.4.0
+    peerDependenciesMeta:
+      rxjs:
+        optional: true
 
   '@ngtools/webpack@19.1.9':
     resolution: {integrity: sha512-mGxFhyYHJoI1GX58zpIl0TnJqyTi8uHhZHS3F20MZGD+RSpKvdfLFI7k2FVnEEbg48nGSLgflEdYj+fx13Xswg==}
@@ -12161,6 +12173,13 @@ snapshots:
   '@ng-icons/lucide@29.10.0':
     dependencies:
       tslib: 2.8.1
+
+  '@ngrx/signals@19.0.1(@angular/core@19.1.8(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)':
+    dependencies:
+      '@angular/core': 19.1.8(rxjs@7.8.1)(zone.js@0.15.0)
+      tslib: 2.8.1
+    optionalDependencies:
+      rxjs: 7.8.1
 
   '@ngtools/webpack@19.1.9(@angular/compiler-cli@19.1.8(@angular/compiler@19.1.8(@angular/core@19.1.8(rxjs@7.8.1)(zone.js@0.15.0)))(typescript@5.7.3))(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.5.7(@swc/helpers@0.5.15))(esbuild@0.19.12))':
     dependencies:

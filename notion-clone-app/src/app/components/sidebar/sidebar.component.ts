@@ -5,7 +5,6 @@ import { AuthUser } from '@supabase/supabase-js';
 import { ClassValue, clsx } from 'clsx';
 
 import { WorkspaceSelectorComponent } from '@notion-clone/workspace/client';
-import { Workspace } from '@notion-clone/workspace/server';
 
 @Component({
   selector: 'nc-sidebar',
@@ -13,12 +12,7 @@ import { Workspace } from '@notion-clone/workspace/server';
   template: `
     <aside [class]="asideStyles()">
       <div>
-        <lib-workspace-selector
-          [privateWorkspaces]="privateWorkspaces()"
-          [sharedWorkspaces]="sharedWorkspaces()"
-          [collaboratingWorkspaces]="collaboratingWorkspaces()"
-          [defaultWorkspace]="defaultWorkspace()"
-          [user]="user()" />
+        <lib-workspace-selector [user]="user()" />
       </div>
     </aside>
   `,
@@ -40,9 +34,5 @@ export class SidebarComponent {
     ),
   );
 
-  privateWorkspaces = input.required<Workspace[]>();
-  sharedWorkspaces = input.required<Workspace[]>();
-  collaboratingWorkspaces = input.required<Workspace[]>();
-  defaultWorkspace = input<Workspace>();
   user = input<AuthUser>();
 }

@@ -1,4 +1,4 @@
-import { Component, effect, input, signal } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AuthUser } from '@supabase/supabase-js';
@@ -17,6 +17,8 @@ import {
   BrnDialogContentDirective,
   BrnDialogTriggerDirective,
 } from '@spartan-ng/brain/dialog';
+
+import { WorkspaceStore } from '../data-access/workspace.store';
 
 import { WorkspaceItemComponent } from './workspace-item/workspace-item.component';
 import { WorkspaceCreatorComponent } from './workspace-creator/workspace-creator.component';
@@ -39,7 +41,7 @@ import { WorkspaceCreatorComponent } from './workspace-creator/workspace-creator
     <div class="relative inline-block text-left">
       <div>
         <span (click)="toggleDropdown()">
-          @if (selectedOption(); as option) {
+          @if (selectedWorkspace(); as option) {
             <lib-workspace-item [workspace]="option" />
           } @else {
             <span>Select a workspace</span>
@@ -128,30 +130,24 @@ import { WorkspaceCreatorComponent } from './workspace-creator/workspace-creator
   `,
 })
 export class WorkspaceSelectorComponent {
-  privateWorkspaces = input.required<Workspace[]>();
-  sharedWorkspaces = input.required<Workspace[]>();
-  collaboratingWorkspaces = input.required<Workspace[]>();
-  defaultWorkspace = input<Workspace>();
+  private workspaceStore = inject(WorkspaceStore);
+
   user = input<AuthUser>();
 
-  // TODO: dispatch SET_WORKSPACES event to global state
+  readonly privateWorkspaces = this.workspaceStore.privateWorkspaces;
+  readonly sharedWorkspaces = this.workspaceStore.sharedWorkspaces;
+  readonly collaboratingWorkspaces =
+    this.workspaceStore.collaboratingWorkspaces;
+  readonly selectedWorkspace = this.workspaceStore.selectedWorkspace;
 
-  // TODO: set selected option from local store
-  selectedOption = signal<Workspace | undefined>(undefined);
   isOpen = signal(false);
-
-  constructor() {
-    effect(() => {
-      this.selectedOption.set(this.defaultWorkspace());
-    });
-  }
 
   toggleDropdown() {
     this.isOpen.update((open) => !open);
   }
 
   handleSelect(workspace: Workspace) {
-    this.selectedOption.set(workspace);
+    this.workspaceStore.selectWorkspace(workspace.id);
     this.isOpen.set(false);
   }
 }
