@@ -1,8 +1,6 @@
 import { Component, computed, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AuthUser } from '@supabase/supabase-js';
-
 import { debounceTime, Subject, switchMap } from 'rxjs';
 
 import { NgIcon, provideIcons } from '@ng-icons/core';
@@ -120,7 +118,7 @@ import { injectTrpcClient } from '@notion-clone/api/client';
 export class CollaboratorSearchComponent {
   trpc = injectTrpcClient();
 
-  user = input<AuthUser>();
+  userId = input.required<string>();
   existingCollaborators = input<User[]>([]);
   addCollaborator = output<User>();
 
@@ -144,7 +142,7 @@ export class CollaboratorSearchComponent {
     const collaboratorExists = (id: string) =>
       this.existingCollaborators().some((e) => e.id === id);
 
-    const isCurrentUser = (id: string) => this.user()?.id === id;
+    const isCurrentUser = (id: string) => this.userId() === id;
 
     return this.searchResults()
       .filter((res) => !collaboratorExists(res.id))

@@ -1,7 +1,5 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { AuthUser } from '@supabase/supabase-js';
 
 import { Workspace } from '@notion-clone/workspace/server';
 
@@ -108,7 +106,7 @@ import { WorkspaceCreatorComponent } from './workspace-creator/workspace-creator
                     creating the workspace too.</p
                   >
                   <div>
-                    <lib-workspace-creator [user]="user()" />
+                    <lib-workspace-creator />
                   </div>
                 </hlm-dialog-header>
               </hlm-dialog-content>
@@ -131,8 +129,6 @@ import { WorkspaceCreatorComponent } from './workspace-creator/workspace-creator
 })
 export class WorkspaceSelectorComponent {
   private workspaceStore = inject(WorkspaceStore);
-
-  user = input<AuthUser>();
 
   readonly privateWorkspaces = this.workspaceStore.privateWorkspaces;
   readonly sharedWorkspaces = this.workspaceStore.sharedWorkspaces;

@@ -12,7 +12,7 @@ import { WorkspaceSelectorComponent } from '@notion-clone/workspace/client';
   template: `
     <aside [class]="asideStyles()">
       <div>
-        <lib-workspace-selector [user]="user()" />
+        <lib-workspace-selector />
       </div>
     </aside>
   `,

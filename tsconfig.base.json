@@ -22,6 +22,7 @@
       "@/utils": ["notion-clone-app/src/utils/index.ts"],
       "@notion-clone/api/client": ["libs/api/client/src/index.ts"],
       "@notion-clone/api/server": ["libs/api/server/src/index.ts"],
+      "@notion-clone/auth": ["libs/auth/src/index.ts"],
       "@notion-clone/core": ["libs/core/src/index.ts"],
       "@notion-clone/core/trpc": ["libs/core/src/lib/trpc/src/index.ts"],
       "@notion-clone/emoji-picker": ["libs/ui/emoji-picker/src/index.ts"],

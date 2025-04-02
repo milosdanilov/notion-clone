@@ -1,8 +1,7 @@
-import { Component, computed, input, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { firstValueFrom } from 'rxjs';
-import { AuthUser } from '@supabase/supabase-js';
 
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideLock, lucidePlus, lucideShare } from '@ng-icons/lucide';
@@ -21,6 +20,7 @@ import {
   HlmAvatarImageDirective,
 } from '@spartan-ng/ui-avatar-helm';
 
+import { AuthStore } from '@notion-clone/auth';
 import { User } from '@notion-clone/user/server';
 import { injectTrpcClient } from '@notion-clone/api/client';
 import { CollaboratorSearchComponent } from '@notion-clone/shared/client';
@@ -120,7 +120,7 @@ const permissionsOptions: PermissionOption[] = [
       @if (permissions().value === 'shared') {
         <div>
           <lib-collaborator-search
-            [user]="user()"
+            [userId]="currentUserId()"
             [existingCollaborators]="collaborators()"
             (addCollaborator)="addCollaborator($event)">
             <div ngProjectAs="sheet-trigger">
@@ -183,11 +183,10 @@ const permissionsOptions: PermissionOption[] = [
 })
 export class WorkspaceCreatorComponent {
   private trpc = injectTrpcClient();
-  // TODO: add global supabase user state, read user from that
-  // check the @/lib/providers/supabase-user-provider file
-  user = input<AuthUser>();
+  private authStore = inject(AuthStore);
 
-  public readonly permissionsOptions = permissionsOptions;
+  readonly permissionsOptions = permissionsOptions;
+  readonly currentUserId = this.authStore.user.id;
 
   permissions = signal(privatePermissionOption);
   title = signal('');
