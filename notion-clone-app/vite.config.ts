@@ -61,9 +61,7 @@ export default defineConfig(({ mode }) => {
       setupFiles: ['src/test-setup.ts'],
       include: ['**/*.spec.ts'],
       reporters: ['default'],
-      cache: {
-        dir: `../node_modules/.vitest`,
-      },
+      cacheDir: `../node_modules/.vitest`,
     },
     define: {
       'import.meta.vitest': mode !== 'production',
