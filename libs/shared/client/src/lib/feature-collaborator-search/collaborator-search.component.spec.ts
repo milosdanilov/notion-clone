@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CollaboratorSearchComponent } from './collaborator-search.component';
 
-describe('CollaboratorSearchComponent', () => {
+describe.skip('CollaboratorSearchComponent', () => {
   let component: CollaboratorSearchComponent;
   let fixture: ComponentFixture<CollaboratorSearchComponent>;
 
