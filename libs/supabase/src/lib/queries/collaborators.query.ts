@@ -10,7 +10,7 @@ export const addCollaborators = async (
   users: UserInput[],
   workspaceId: string,
 ) => {
-  users.forEach(async (user: User) => {
+  users.forEach(async (user: UserInput) => {
     const exists = await db.query.collaborators.findFirst({
       where: (u, { eq }) =>
         and(eq(u.userId, user.id), eq(u.workspaceId, workspaceId)),
