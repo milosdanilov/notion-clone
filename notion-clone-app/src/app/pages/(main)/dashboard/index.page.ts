@@ -1,11 +1,9 @@
 import { NgIcon } from '@ng-icons/core';
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { FormAction, LoadResult } from '@analogjs/router';
-
-import { AuthUser } from '@supabase/supabase-js';
 
 import {
   HlmCardContentDirective,
@@ -33,9 +31,6 @@ import { HlmIconDirective } from '@spartan-ng/ui-icon-helm';
 import { EmojiPickerComponent } from '@notion-clone/emoji-picker';
 import { DisableCtrlDirective } from '@notion-clone/ui-utils';
 
-import { Subscription } from '@notion-clone/supabase';
-
-// eslint-disable-next-line @nx/enforce-module-boundaries
 import { zodValidator } from '@/utils';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { CreateWorkspaceFormSchema } from '@/dashboard';
@@ -169,9 +164,7 @@ export default class DashboardPageComponent {
 
   load = input<LoadResult<typeof load>>();
 
-  // TODO: check, this is probably null, should use load.subscription instead.
-  subscription = input<Subscription | null>();
-  user = input<AuthUser>();
+  readonly subscription = computed(() => this.load()?.subscription);
 
   form = this.fb.group(
     {

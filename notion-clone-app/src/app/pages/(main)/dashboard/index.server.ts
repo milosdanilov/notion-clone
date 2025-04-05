@@ -49,7 +49,6 @@ export const load = async ({ event }: PageServerLoad) => {
 
   if (!workspace) {
     return {
-      user,
       subscription,
     };
   }
