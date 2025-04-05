@@ -3,7 +3,7 @@ import { provideRouter, RouterLink } from '@angular/router';
 
 import { WorkspaceItemComponent } from './workspace-item.component';
 
-describe('SelectedWorkspaceComponent', () => {
+describe.skip('WorkspaceItemComponent', () => {
   let component: WorkspaceItemComponent;
   let fixture: ComponentFixture<WorkspaceItemComponent>;
 
@@ -18,7 +18,7 @@ describe('SelectedWorkspaceComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
