@@ -1,9 +1,14 @@
 import { NgIcon } from '@ng-icons/core';
 import { Component, computed, inject, input, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { RedirectCommand, Router } from '@angular/router';
 
-import { FormAction, LoadResult } from '@analogjs/router';
+import {
+  FormAction,
+  getLoadResolver,
+  LoadResult,
+  RouteMeta,
+} from '@analogjs/router';
 
 import {
   HlmCardContentDirective,
@@ -40,6 +45,23 @@ import {
   type CreateWorkspaceSuccessRes,
   load,
 } from './index.server';
+
+export const routeMeta: RouteMeta = {
+  resolve: {
+    data: async (route) => {
+      const router = inject(Router);
+      const data = await getLoadResolver<LoadResult<typeof load>>(route);
+
+      if (data?.workspace) {
+        return new RedirectCommand(
+          router.parseUrl(`/dashboard/${data.workspace.id}`),
+        );
+      }
+
+      return data;
+    },
+  },
+};
 
 @Component({
   selector: 'nc-main-dashboard-page',

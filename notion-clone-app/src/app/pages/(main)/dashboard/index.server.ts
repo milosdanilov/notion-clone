@@ -1,10 +1,5 @@
 import { PageServerLoad } from '@analogjs/router';
-import {
-  fail,
-  json,
-  PageServerAction,
-  redirect,
-} from '@analogjs/router/server/actions';
+import { fail, json, PageServerAction } from '@analogjs/router/server/actions';
 
 import { readFormData } from 'h3';
 import { z } from 'zod';
@@ -42,20 +37,20 @@ export const load = async ({ event }: PageServerLoad) => {
 
   const workspace = await WorkspaceRepository.getByUserId(user.id);
 
+  if (workspace) {
+    return {
+      workspace,
+    };
+  }
+
   const { data: subscription, error: subscriptionError } =
     await getUserSubscriptionStatus(user.id);
 
   if (subscriptionError) return;
 
-  if (!workspace) {
-    return {
-      subscription,
-    };
-  }
-
-  redirect(`/dashboard/${workspace.id}`);
-
-  return;
+  return {
+    subscription,
+  };
 };
 
 export async function action({ event }: PageServerAction) {
