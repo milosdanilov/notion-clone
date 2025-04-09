@@ -45,6 +45,7 @@ import {
   type CreateWorkspaceSuccessRes,
   load,
 } from './index.server';
+import { WorkspaceStore } from '@notion-clone/workspace/client';
 
 export const routeMeta: RouteMeta = {
   resolve: {
@@ -98,6 +99,7 @@ export const routeMeta: RouteMeta = {
           <form
             method="post"
             [formGroup]="form"
+            (state)="isLoading.set(true)"
             (onSuccess)="onCreateWorkspaceSuccess($any($event))"
             (onError)="onCreateWorkspaceError($any($event))">
             <div class="flex flex-col gap-4">
@@ -183,6 +185,7 @@ export default class DashboardPageComponent {
   private fb = inject(FormBuilder);
   private toastService = inject(HlmToasterService);
   private router = inject(Router);
+  private workspaceStore = inject(WorkspaceStore);
 
   load = input<LoadResult<typeof load>>();
 
@@ -204,7 +207,7 @@ export default class DashboardPageComponent {
       description: `${res.workspace.title} has been created successfully.`,
     });
 
-    // TODO: add workspace to state
+    this.workspaceStore.addPrivateWorkspace(res.workspace);
 
     this.router.navigate(['dashboard', `${res.workspace.id}`]);
   }

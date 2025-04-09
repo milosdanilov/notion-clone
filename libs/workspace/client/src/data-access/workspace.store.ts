@@ -48,5 +48,10 @@ export const WorkspaceStore = signalStore(
     selectWorkspace: (workspaceId: string) => {
       patchState(store, { selectedWorkspaceId: workspaceId });
     },
+    addPrivateWorkspace: (workspace: Workspace) => {
+      patchState(store, {
+        privateWorkspaces: [...store.privateWorkspaces(), workspace],
+      });
+    },
   })),
 );
