@@ -2,15 +2,13 @@ import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
-import { Workspace } from '@notion-clone/workspace/server';
-
 @Component({
   selector: 'lib-workspace-item',
   imports: [CommonModule, RouterLink],
   template: `
     <a
-      routerLink="{{ '/dashboard/' + workspace().id }}"
-      (click)="workspaceClicked.emit(workspace())"
+      routerLink="{{ '/dashboard/' + workspaceId() }}"
+      (click)="workspaceClicked.emit()"
       class="flex rounded-md hover:bg-muted transition-all 
       flex-row p-2 gap-4 justify-center cursor-pointer items-center my-2">
       <img
@@ -23,15 +21,16 @@ import { Workspace } from '@notion-clone/workspace/server';
         <p
           class="text-lg w-[170px] overflow-hidden 
           overflow-ellipsis whitespace-nowrap">
-          {{ workspace().title }}
+          {{ workspaceTitle() }}
         </p>
       </div>
     </a>
   `,
 })
 export class WorkspaceItemComponent {
-  workspace = input.required<Workspace>();
-  workspaceClicked = output<Workspace>();
-
+  workspaceId = input.required<string>();
+  workspaceTitle = input.required<string>();
   workspaceLogo = input.required<string>();
+
+  workspaceClicked = output<void>();
 }

@@ -41,8 +41,9 @@ import { WorkspaceCreatorComponent } from './workspace-creator/workspace-creator
         <span (click)="toggleDropdown()">
           @if (selectedWorkspace(); as option) {
             <lib-workspace-item
-              [workspaceLogo]="workspaceLogoUrls()[option.id]"
-              [workspace]="option" />
+              [workspaceId]="option.id"
+              [workspaceTitle]="option.title"
+              [workspaceLogo]="workspaceLogoUrls()[option.id]" />
           } @else {
             <span>Select a workspace</span>
           }
@@ -123,9 +124,10 @@ import { WorkspaceCreatorComponent } from './workspace-creator/workspace-creator
       <hr />
       @for (option of workspaces; track $index) {
         <lib-workspace-item
+          [workspaceId]="option.id"
+          [workspaceTitle]="option.title"
           [workspaceLogo]="workspaceLogoUrls()[option.id]"
-          [workspace]="option"
-          (workspaceClicked)="handleSelect($event)" />
+          (workspaceClicked)="handleSelect(option)" />
       }
     </ng-template>
   `,
