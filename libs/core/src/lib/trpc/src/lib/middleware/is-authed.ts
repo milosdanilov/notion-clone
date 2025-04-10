@@ -1,13 +1,8 @@
 import { TRPCError } from '@trpc/server';
-import { Context } from '../context';
 
-export const isAuthed = <R>({
-  ctx,
-  next,
-}: {
-  ctx: Context;
-  next: ({ ctx }: { ctx: Context }) => R;
-}) => {
+import { middleware } from '../trpc';
+
+export const isAuthed = middleware(({ ctx, next }) => {
   if (!ctx.user) {
     throw new TRPCError({
       code: 'UNAUTHORIZED',
@@ -21,4 +16,4 @@ export const isAuthed = <R>({
       user: ctx.user,
     },
   });
-};
+});
