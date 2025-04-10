@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SidebarComponent } from './sidebar.component';
 
-describe.skip('SidebarComponent', () => {
+describe('SidebarComponent', () => {
   let component: SidebarComponent;
   let fixture: ComponentFixture<SidebarComponent>;
 
@@ -15,7 +15,7 @@ describe.skip('SidebarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it.skip('should create', () => {
     console.log('here');
     expect(component).toBeTruthy();
   });
