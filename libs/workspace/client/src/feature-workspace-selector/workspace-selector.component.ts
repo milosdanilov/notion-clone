@@ -40,7 +40,9 @@ import { WorkspaceCreatorComponent } from './workspace-creator/workspace-creator
       <div>
         <span (click)="toggleDropdown()">
           @if (selectedWorkspace(); as option) {
-            <lib-workspace-item [workspace]="option" />
+            <lib-workspace-item
+              [workspaceLogo]="workspaceLogoUrls()[option.id]"
+              [workspace]="option" />
           } @else {
             <span>Select a workspace</span>
           }
@@ -121,6 +123,7 @@ import { WorkspaceCreatorComponent } from './workspace-creator/workspace-creator
       <hr />
       @for (option of workspaces; track $index) {
         <lib-workspace-item
+          [workspaceLogo]="workspaceLogoUrls()[option.id]"
           [workspace]="option"
           (workspaceClicked)="handleSelect($event)" />
       }
@@ -135,6 +138,7 @@ export class WorkspaceSelectorComponent {
   readonly collaboratingWorkspaces =
     this.workspaceStore.collaboratingWorkspaces;
   readonly selectedWorkspace = this.workspaceStore.selectedWorkspace;
+  readonly workspaceLogoUrls = this.workspaceStore.workspaceLogoUrls;
 
   isOpen = signal(false);
 

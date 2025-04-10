@@ -1,4 +1,4 @@
-import { computed } from '@angular/core';
+import { computed, inject } from '@angular/core';
 import {
   patchState,
   signalStore,
@@ -6,7 +6,10 @@ import {
   withMethods,
   withState,
 } from '@ngrx/signals';
+
 import { Workspace } from '@notion-clone/workspace/server';
+
+import { WorkspaceService } from './services/workspace.service';
 
 type WorkspaceState = {
   privateWorkspaces: Workspace[] | [];
@@ -34,13 +37,27 @@ export const WorkspaceStore = signalStore(
       ];
     }),
   })),
-  withComputed(({ allWorkspaces, selectedWorkspaceId }) => ({
-    selectedWorkspace: computed(() => {
-      return allWorkspaces().find(
-        (workspace) => workspace.id === selectedWorkspaceId(),
-      );
+  withComputed(
+    (
+      { allWorkspaces, selectedWorkspaceId },
+      workspaceService = inject(WorkspaceService),
+    ) => ({
+      selectedWorkspace: computed(() => {
+        return allWorkspaces().find(
+          (workspace) => workspace.id === selectedWorkspaceId(),
+        );
+      }),
+      workspaceLogoUrls: computed(() => {
+        return allWorkspaces().reduce(
+          (acc, { logo, id }) => {
+            acc[id] = workspaceService.getLogoPublicUrl(logo);
+            return acc;
+          },
+          {} as Record<string, string>,
+        );
+      }),
     }),
-  })),
+  ),
   withMethods((store) => ({
     initialize: (payload: WorkspaceState) => {
       patchState(store, { ...payload });

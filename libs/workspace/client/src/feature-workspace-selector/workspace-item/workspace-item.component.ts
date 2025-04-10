@@ -1,4 +1,4 @@
-import { Component, input, output, signal } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
@@ -33,6 +33,5 @@ export class WorkspaceItemComponent {
   workspace = input.required<Workspace>();
   workspaceClicked = output<Workspace>();
 
-  // TODO: add a fetch to supabase to get the actual workspace logo
-  workspaceLogo = signal('/assets/cypresslogo.svg');
+  workspaceLogo = input.required<string>();
 }

@@ -62,6 +62,12 @@ export const workspacesRouter = router({
       await addCollaborators(input.collaborators, workspace.id);
       return workspace;
     }),
+  // getLogoUrl: authProcedure
+  //   .input(z.object({ workspaceId: z.string() }))
+  //   .output(z.string())
+  //   .query(({ ctx, input }) => {
+  //     return ctx.storage.getWorkspaceLogoUrl(input.workspaceId);
+  //   }),
 });
 
 export type WorkspacesRouter = typeof workspacesRouter;
