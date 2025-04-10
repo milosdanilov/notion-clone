@@ -28,6 +28,7 @@ export const load = async ({ event, params }: PageServerLoad) => {
     await FolderRepository.getFolders(params['workspaceId']);
 
   if (subscriptionError || foldersError) {
+    // TODO: check, this is incorrect
     redirect('/dashboard');
   }
 

@@ -4,7 +4,13 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideFileRouter } from '@analogjs/router';
 
-import { provideTrpcClient } from '@notion-clone/api/client';
+import {
+  provideStorageBrowserClient,
+  provideSupabaseClient,
+  provideTrpcClient,
+} from '@notion-clone/api/client';
+
+import { createSupabaseBrowserClientFactory } from '../utils/supabase-base-client';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,5 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()),
 
     provideTrpcClient(),
+    provideSupabaseClient(createSupabaseBrowserClientFactory),
+    provideStorageBrowserClient(),
   ],
 };
