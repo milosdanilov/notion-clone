@@ -1,7 +1,7 @@
 import { inject, InjectionToken, Provider } from '@angular/core';
 import { SupabaseClient } from '@supabase/supabase-js';
 
-import { SupabaseStorageClient } from '@notion-clone/core';
+import { SupabaseStorageClient } from '@notion-clone/core_old';
 
 const SUPABASE_CLIENT = new InjectionToken<SupabaseClient>(
   '@notion-clone SUPABASE_CLIENT',

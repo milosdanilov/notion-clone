@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { authProcedure, router } from '@notion-clone/core/trpc';
+import { authProcedure, router } from '@notion-clone/core_old/trpc';
 
 import { UserRepository } from '../../repository/user.repository';
 

@@ -18,7 +18,7 @@ import {
 
 import { HlmPopoverContentDirective } from '@spartan-ng/ui-popover-helm';
 
-import { NOOP } from '@notion-clone/core';
+import { NOOP } from '@notion-clone/core_old';
 
 export type Emoji = EmojiData;
 

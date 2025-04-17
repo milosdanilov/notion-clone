@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 import { addCollaborators } from '@notion-clone/supabase';
 
-import { authProcedure, router } from '@notion-clone/core/trpc';
+import { authProcedure, router } from '@notion-clone/core_old/trpc';
 
 import { WorkspaceRepository } from '../../repository/workspace.repository';
 

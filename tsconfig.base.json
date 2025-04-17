@@ -23,8 +23,10 @@
       "@notion-clone/api/client": ["libs/api/client/src/index.ts"],
       "@notion-clone/api/server": ["libs/api/server/src/index.ts"],
       "@notion-clone/auth": ["libs/auth/src/index.ts"],
-      "@notion-clone/core": ["libs/core/src/index.ts"],
-      "@notion-clone/core/trpc": ["libs/core/src/lib/trpc/src/index.ts"],
+      "@notion-clone/core_old": ["libs/core_old/src/index.ts"],
+      "@notion-clone/core_old/trpc": [
+        "libs/core_old/src/lib/trpc/src/index.ts"
+      ],
       "@notion-clone/emoji-picker": ["libs/ui/emoji-picker/src/index.ts"],
       "@notion-clone/folder/server": ["libs/folder/server/src/index.ts"],
       "@notion-clone/shared/client": ["libs/shared/client/src/index.ts"],

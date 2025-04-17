@@ -1,4 +1,4 @@
-import { router } from '@notion-clone/core/trpc';
+import { router } from '@notion-clone/core_old/trpc';
 
 import { workspacesRouter } from '@notion-clone/workspace/server';
 import { usersRouter } from '@notion-clone/user/server';

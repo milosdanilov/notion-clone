@@ -1,6 +1,6 @@
 import { EventHandlerRequest, H3Event } from 'h3';
 
-import { SupabaseStorageClient } from '@notion-clone/core';
+import { SupabaseStorageClient } from '@notion-clone/core_old';
 
 import { createSupabaseClientFactory } from './supabase-base-client';
 
