@@ -2,7 +2,7 @@ import { LoadResult } from '@analogjs/router';
 import { Component, effect, inject, input } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-import { AuthStore } from '@notion-clone/auth';
+import { AuthStore } from '@notion-clone/auth_old';
 
 import { load } from './dashboard.server';
 

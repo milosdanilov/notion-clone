@@ -20,7 +20,7 @@ import {
   HlmAvatarImageDirective,
 } from '@spartan-ng/ui-avatar-helm';
 
-import { AuthStore } from '@notion-clone/auth';
+import { AuthStore } from '@notion-clone/auth_old';
 import { User } from '@notion-clone/user/server';
 import { injectTrpcClient } from '@notion-clone/api/client';
 import { CollaboratorSearchComponent } from '@notion-clone/shared/client';

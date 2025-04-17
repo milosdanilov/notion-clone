@@ -22,7 +22,7 @@
       "@/utils": ["notion-clone-app/src/utils/index.ts"],
       "@notion-clone/api/client": ["libs/api/client/src/index.ts"],
       "@notion-clone/api/server": ["libs/api/server/src/index.ts"],
-      "@notion-clone/auth": ["libs/auth/src/index.ts"],
+      "@notion-clone/auth_old": ["libs/auth_old/src/index.ts"],
       "@notion-clone/core_old": ["libs/core_old/src/index.ts"],
       "@notion-clone/core_old/trpc": [
         "libs/core_old/src/lib/trpc/src/index.ts"

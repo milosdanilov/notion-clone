@@ -1,7 +1,7 @@
 {
   "name": "core",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/core/src",
+  "sourceRoot": "libs/core_old/src",
   "projectType": "library",
   "tags": [],
   "// targets": "to see all targets run: nx show project core --web",
@@ -10,7 +10,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/core/jest.config.ts",
+        "jestConfig": "libs/core_old/jest.config.ts",
         "passWithNoTests": true
       }
     }

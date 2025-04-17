@@ -1,7 +1,7 @@
 {
-  "name": "auth",
+  "name": "auth_old",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/auth/src",
+  "sourceRoot": "libs/auth_old/src",
   "prefix": "lib",
   "projectType": "library",
   "tags": [],
@@ -10,7 +10,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/auth/jest.config.ts",
+        "jestConfig": "libs/auth_old/jest.config.ts",
         "passWithNoTests": true
       }
     },
