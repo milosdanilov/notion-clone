@@ -15,25 +15,12 @@ import {
 } from '../../types/auth.type';
 import { wrapResponse } from '../../utils/wrap-response';
 
-type SupabaseSessionResponse =
-  | {
-      data: {
-        session: SupabaseSession;
-      };
-      error: null;
-    }
-  | {
-      data: {
-        session: null;
-      };
-      error: { message: string; status: number; code: string };
-    }
-  | {
-      data: {
-        session: null;
-      };
-      error: null;
-    };
+type SupabaseSessionResponse = {
+  data: {
+    session: SupabaseSession | null;
+  };
+  error: { message: string; status?: number; code?: string } | null;
+};
 
 export function mapUserFromSupabase(user: SupabaseUser): User {
   return {
@@ -56,13 +43,15 @@ export function toUserReponse({
   data,
   error,
 }: SupabaseUserResponse): UserResponse {
+  const response = wrapResponse({ user: null as unknown as User });
+
   if (error) {
-    return wrapResponse.error(
+    return response.error(
       new AuthError(error.message, error.status, error.code),
     );
   }
 
-  return wrapResponse.success({
+  return response.success({
     user: mapUserFromSupabase(data.user),
   });
 }
@@ -71,13 +60,18 @@ export function toSessionResponse({
   data,
   error,
 }: SupabaseSessionResponse): SessionResponse {
+  const response = wrapResponse({ session: null as unknown as Session });
   if (error) {
-    return wrapResponse.error(
+    return response.error(
       new AuthError(error.message, error.status, error.code),
     );
   }
 
-  return wrapResponse.success({
+  if (!data.session) {
+    return response.error(new AuthError('Session is empty'));
+  }
+
+  return response.success({
     session: mapSessionFromSupabase(data.session),
   });
 }
@@ -86,13 +80,22 @@ export function toAuthResponse({
   data,
   error,
 }: SupabaseAuthResponse): AuthResponse {
+  const response = wrapResponse({
+    session: null as unknown as Session,
+    user: null as unknown as User,
+  });
+
   if (error) {
-    return wrapResponse.error(
+    return response.error(
       new AuthError(error.message, error.status, error.code),
     );
   }
 
-  return wrapResponse.success({
+  if (!data.session || !data.user) {
+    return response.error(new AuthError('User or Session is empty'));
+  }
+
+  return response.success({
     user: mapUserFromSupabase(data.user),
     session: mapSessionFromSupabase(data.session),
   });

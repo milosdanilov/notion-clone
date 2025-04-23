@@ -2,7 +2,7 @@ export class AuthError extends Error {
   protected __isAuthError = true;
 
   constructor(
-    public message: string,
+    public override message: string,
     public status?: number,
     public code?: string,
   ) {
