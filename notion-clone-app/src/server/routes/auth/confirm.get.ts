@@ -1,23 +1,27 @@
-import { EmailOtpType } from '@supabase/supabase-js';
-
+import { VerifyOtpType } from '@notion-clone/auth';
 import { defineEventHandler, getRequestURL, sendRedirect } from 'h3';
-
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import { createAuthClient } from '@/utils';
 
 export default defineEventHandler(async (event) => {
   const reqUrl = getRequestURL(event);
 
   const tokenHash = reqUrl.searchParams.get('token_hash');
-  const type = reqUrl.searchParams.get('type') as EmailOtpType;
+  const type = reqUrl.searchParams.get('type');
   const next = reqUrl.searchParams.get('next') ?? '/';
 
   if (!tokenHash || !type) {
     return sendRedirect(event, '/signup');
   }
 
-  const client = createAuthClient(event);
-  const { error } = await client.confirmEmail(tokenHash, type);
+  // TODO: validate type better
+  if (!['email'].includes(type)) {
+    return sendRedirect(
+      event,
+      `/signup?error_code=1&error_message=Provided type for verification is not allowed`,
+    );
+  }
+
+  const client = event.context.authClient;
+  const { error } = await client.confirmEmail(tokenHash, type as VerifyOtpType);
 
   if (!error) {
     return sendRedirect(event, next);

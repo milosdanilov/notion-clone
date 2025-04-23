@@ -9,8 +9,6 @@ import { z } from 'zod';
 
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { LoginFormScheme } from '@/auth';
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import { createAuthClient } from '@/utils';
 
 export type LoginSubmitErrors = Partial<
   z.inferFlattenedErrors<typeof LoginFormScheme>['fieldErrors'] & {
@@ -31,11 +29,11 @@ export async function action({ event }: PageServerAction) {
     );
   }
 
-  const authClient = createAuthClient(event);
+  const authClient = event.context.authClient;
 
   const { email, password } = validatedLoginFormData.data;
 
-  const { error } = await authClient.login(email, password);
+  const { error } = await authClient.authenticate(email, password);
 
   if (error) {
     return fail<LoginSubmitErrors>(error.status || 400, {

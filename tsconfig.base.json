@@ -17,6 +17,7 @@
     "paths": {
       "@/auth": ["notion-clone-app/src/libs/auth/index.ts"],
       "@/components": ["notion-clone-app/src/app/components/index.ts"],
+      "@/config": ["notion-clone-app/src/config/index.ts"],
       "@/dashboard": ["notion-clone-app/src/libs/dashboard/index.ts"],
       "@/site": ["notion-clone-app/src/libs/site/index.ts"],
       "@/utils": ["notion-clone-app/src/utils/index.ts"],

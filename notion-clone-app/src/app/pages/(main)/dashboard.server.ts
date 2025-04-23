@@ -1,10 +1,9 @@
 import { PageServerAction } from '@analogjs/router/server/actions';
 
-import { createAuthClient } from '@/utils';
 import { createError } from 'h3';
 
 export const load = async ({ event }: PageServerAction) => {
-  const authClient = createAuthClient(event);
+  const authClient = event.context.authClient;
 
   const {
     data: { user },

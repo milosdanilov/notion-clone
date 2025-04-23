@@ -1,9 +1,9 @@
 import { Component, computed, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AuthUser } from '@supabase/supabase-js';
 import { ClassValue, clsx } from 'clsx';
 
+import { User } from '@notion-clone/auth';
 import { WorkspaceSelectorComponent } from '@notion-clone/workspace/client';
 
 @Component({
@@ -34,5 +34,5 @@ export class SidebarComponent {
     ),
   );
 
-  user = input<AuthUser>();
+  user = input<User>();
 }

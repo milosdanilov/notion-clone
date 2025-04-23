@@ -13,7 +13,7 @@ import {
 } from '@notion-clone/workspace/server';
 
 // eslint-disable-next-line @nx/enforce-module-boundaries
-import { createAuthClient, createStorageClient, Success } from '@/utils';
+import { createStorageClient, Success } from '@/utils';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { CreateWorkspaceFormSchema } from '@/dashboard';
 
@@ -27,7 +27,7 @@ export type CreateWorkspaceSubmitErrors = Partial<
 export type CreateWorkspaceSuccessRes = Success<{ workspace: Workspace }>;
 
 export const load = async ({ event }: PageServerLoad) => {
-  const authClient = createAuthClient(event);
+  const authClient = event.context.authClient;
 
   const {
     data: { user },
@@ -91,7 +91,7 @@ export async function action({ event }: PageServerAction) {
   };
 
   try {
-    const authClient = createAuthClient(event);
+    const authClient = event.context.authClient;
 
     const {
       data: { user },

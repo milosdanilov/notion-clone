@@ -4,12 +4,10 @@ import { H3Event } from 'h3';
 
 import { AppRouter, appRouter } from '@notion-clone/api/server';
 
-import { createAuthClient } from '@/utils';
-
 export const createContext: CreateContextFn<AppRouter> = async (
   event: H3Event,
 ) => {
-  const authClient = createAuthClient(event);
+  const authClient = event.context.authClient;
 
   const {
     data: { user },

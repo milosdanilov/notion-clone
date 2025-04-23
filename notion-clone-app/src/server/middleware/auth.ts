@@ -1,11 +1,15 @@
 import { defineEventHandler, getRequestURL, sendRedirect } from 'h3';
 
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import { createAuthClient } from '@/utils';
+import { AuthServicePort, SupabaseAuthAdapter } from '@notion-clone/auth';
+
+import { createSupabaseClient } from '@/config';
 
 export default defineEventHandler(async (event) => {
-  const client = createAuthClient(event);
-  const { data } = await client.getSession();
+  const authClient: AuthServicePort = new SupabaseAuthAdapter(
+    createSupabaseClient(event),
+  );
+
+  const { data } = await authClient.getSession();
 
   const req = getRequestURL(event);
 

@@ -14,7 +14,8 @@
             "allow": [
               "libs/supabase/migrations/schema",
               "@/utils",
-              "@/components"
+              "@/components",
+              "@/config"
             ],
             "depConstraints": [
               {

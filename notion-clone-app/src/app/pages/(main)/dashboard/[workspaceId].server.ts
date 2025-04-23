@@ -5,10 +5,8 @@ import { getUserSubscriptionStatus } from '@notion-clone/supabase';
 import { WorkspaceRepository } from '@notion-clone/workspace/server';
 import { FolderRepository } from '@notion-clone/folder/server';
 
-import { createAuthClient } from '@/utils';
-
 export const load = async ({ event, params }: PageServerLoad) => {
-  const authClient = createAuthClient(event);
+  const authClient = event.context.authClient;
 
   const {
     data: { user },

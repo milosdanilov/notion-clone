@@ -6,10 +6,10 @@ import {
 
 import { readFormData } from 'h3';
 
+import { checkEmailExists } from '@notion-clone/supabase';
+
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { SignUpFormSchema } from '@/auth';
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import { createAuthClient } from '@/utils';
 
 export async function action({ event }: PageServerAction) {
   const formData = await readFormData(event);
@@ -21,15 +21,15 @@ export async function action({ event }: PageServerAction) {
     return fail(400, validatedSignUpFormData.error.flatten().fieldErrors);
   }
 
-  const client = createAuthClient(event);
-
   const { email, password } = validatedSignUpFormData.data;
 
-  if (await client.checkEmailExists(email)) {
+  if (await checkEmailExists(email)) {
     return fail(422, 'User already exists');
   }
 
-  const { data, error } = await client.signUp(
+  const client = event.context.authClient;
+
+  const { data, error } = await client.register(
     email,
     password,
     `${import.meta.env['VITE_PUBLIC_SITE_URL']}/confirm`,

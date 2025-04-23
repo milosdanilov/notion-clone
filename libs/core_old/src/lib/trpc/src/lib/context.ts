@@ -5,7 +5,7 @@ export interface User {
 }
 
 export interface Context {
-  user: User;
+  user: User | null;
 }
 
 export type CreateContextFn = (event: H3Event) => Promise<Context>;
